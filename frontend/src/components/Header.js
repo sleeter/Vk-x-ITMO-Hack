@@ -1,7 +1,7 @@
 import {Icon28ArrowLeftOutline} from '@vkontakte/icons';
 import PropTypes from 'prop-types';
-import darkLogo from '../assets/darkLogo.svg';
-import lightLogo from '../assets/lightLogo.svg';
+import DarkLogo from '../assets/DarkLogo.svg';
+import LightLogo from '../assets/LightLogo.svg';
 
 export const Header = ({ auth, isLight }) => {
     const isAuth = auth;
@@ -12,7 +12,7 @@ export const Header = ({ auth, isLight }) => {
     };
 
     const color = isLight ? '#fff' : '#1673DB';
-    const logo = isLight ? lightLogo : darkLogo;
+    const logo = isLight ? LightLogo : DarkLogo;
 
     return (
         <div style={{
@@ -20,7 +20,6 @@ export const Header = ({ auth, isLight }) => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             padding: '20px 3vw',
-            // height: '10vh',
             alignItems: 'center',
             backgroundColor: '#00000000',
             fontFamily: 'font-family: "Inter", sans-serif',

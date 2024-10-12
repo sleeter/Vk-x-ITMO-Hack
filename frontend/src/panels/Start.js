@@ -1,6 +1,6 @@
 import { Panel } from '@vkontakte/vkui';
 import PropTypes from 'prop-types';
-import {Header} from '../../components/Header.js';
+import {Header} from '../components/Header.js';
 
 export const Start = ({ id }) => {
     return (
