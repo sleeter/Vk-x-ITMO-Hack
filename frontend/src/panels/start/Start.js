@@ -1,5 +1,6 @@
 import { Panel } from '@vkontakte/vkui';
 import PropTypes from 'prop-types';
+import {Header} from '../../components/Header.js';
 
 export const Start = ({ id }) => {
     return (
@@ -10,10 +11,11 @@ export const Start = ({ id }) => {
                 height: '100vh',
                 backgroundColor: '#1673DB',
             }}>
+                <Header auth={true} isLight={true} />
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',
-                    paddingTop: '17vh',
+                    paddingTop: '12vh',
                 }}>
                     <h1 style={{
                         color: '#FFFFFF',
