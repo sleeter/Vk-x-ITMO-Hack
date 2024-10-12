@@ -11,7 +11,7 @@
     width: 300px;
 }
 
-button {
+.greetings-box + button {
     position: absolute;
     bottom: 3vh;
     left: 50%;

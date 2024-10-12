@@ -21,9 +21,13 @@ export const Header = ({ auth, isLight }) => {
             justifyContent: 'space-between',
             padding: '20px 3vw',
             alignItems: 'center',
-            backgroundColor: '#00000000',
+            backgroundColor: '#ffffff00',
             fontFamily: 'font-family: "Inter", sans-serif',
-            position: 'relative',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 1000,
         }}>
             <div onClick={onBackClick}>
                 <Icon28ArrowLeftOutline style={{color: color}}/>

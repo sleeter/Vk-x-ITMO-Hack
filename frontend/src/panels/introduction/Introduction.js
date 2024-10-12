@@ -20,9 +20,7 @@ export const Introduction = ({ id }) => {
                     <img src={GreetingOne} alt='greeting-one'/>
                     <img src={GreetingTwo} alt='greeting-two'/>
                 </div>
-                <div>
-                    <button>Next</button>
-                </div>
+                <button>Next</button>
             </div>
         </Panel>
     );
