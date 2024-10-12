@@ -9,15 +9,15 @@ import {
     Button,
     Placeholder
 } from '@vkontakte/vkui';
-import { Icon28HeartOutline, Icon28HeartBrokenOutline } from '@vkontakte/icons';
+import { Icon28CheckCircleOutline, Icon28CancelCircleOutline } from '@vkontakte/icons';
 import '@vkontakte/vkui/dist/vkui.css';
+import back from "../assets/back.svg"
 
-// Вопросы с указанием верной категории
 const questions = [
-    { id: 1, text: "Доброжелательный вопрос", category: "friendly" },
-    { id: 2, text: "Грубый вопрос", category: "unfriendly" },
-    { id: 3, text: "Приветственное сообщение", category: "friendly" },
-    { id: 4, text: "Оскорбление", category: "unfriendly" }
+    { id: 1, text: "Поблагодарить своих коллег", category: "friendly" },
+    { id: 2, text: "Попасть на допсу по ITMO.ENTER", category: "unfriendly" },
+    { id: 3, text: "Сходить на менторскую консультацию", category: "friendly" },
+    { id: 4, text: "Закрыться в комнате с компьютером", category: "unfriendly" }
 ];
 
 const QuizGame = () => {
@@ -53,12 +53,11 @@ const QuizGame = () => {
 
     return (
         <View activePanel={activePanel}>
-            {/* Панель игры */}
             <Panel id="game">
                 <PanelHeader>Викторина</PanelHeader>
-                <Group>
-                    <Div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
-                        {/* Вопросы в голубых блоках с закругленными углами */}
+                <div style={{height: 'calc(100vh - var(--vkui_internal--panel_header_height) - 18px)', backgroundImage: `url(${back})`, backgroundSize: 'cover'}}>
+                <Group style={{  }}>
+                    <Div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
                         {questions.map((question) =>
                             !userAnswers.some((a) => a.id === question.id) ? (
                                 <Div
@@ -66,19 +65,17 @@ const QuizGame = () => {
                                     draggable
                                     onDragStart={() => handleDragStart(question)}
                                     style={{
-                                        width: '45%',
-                                        height: 80,
-                                        backgroundColor: '#4A90E2',
-                                        color: '#FFFFFF',
+                                        width: 100,
+                                        height: 100,
+                                        backgroundColor: '#1673DB',
+                                        color:'#fff',
+                                        fontWeight:500,
+                                        borderRadius:'20px',
                                         display: 'flex',
                                         justifyContent: 'center',
                                         alignItems: 'center',
-                                        borderRadius: '12px',
-                                        marginBottom: '16px',
-                                        cursor: 'grab',
-                                        textAlign: 'center',
-                                        padding: '10px',
-                                        fontSize: '16px'
+                                        border: '3px solid #1366c2',
+                                        cursor: 'grab'
                                     }}
                                 >
                                     {question.text}
@@ -86,58 +83,53 @@ const QuizGame = () => {
                             ) : null
                         )}
                     </Div>
-
                     {/* Зоны для перетаскивания */}
-                    <Div style={{ display: 'flex', justifyContent: 'space-around', marginTop: 50 }}>
+                    <Div style={{ display: 'flex', justifyContent: 'space-around' }}>
                         <Div
                             onDragOver={(e) => e.preventDefault()}
                             onDrop={() => handleDrop('friendly')}
                             style={{
-                                width: 120,
-                                height: 100,
-                                backgroundColor: '#4BB34B',
-                                borderRadius: '12px',
+                                marginTop: '70px',
+                                width: 150,
+                                height: 150,
+                                // border: '2px dashed #4BB34B',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 justifyContent: 'center',
-                                alignItems: 'center',
-                                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)'
+                                alignItems: 'center'
                             }}
                         >
-                            <Icon28HeartOutline fill="#ffffff" width={50} height={50} />
-                            <Title level="3" weight="bold" style={{ color: '#ffffff' }}>Friendly</Title>
+                            <Icon28CheckCircleOutline fill="#4BB34B" width={50} height={50} />
+                            <Title level="2" weight="bold">Friendly</Title>
                         </Div>
 
                         <Div
                             onDragOver={(e) => e.preventDefault()}
                             onDrop={() => handleDrop('unfriendly')}
                             style={{
-                                width: 120,
-                                height: 100,
-                                backgroundColor: '#E64646',
-                                borderRadius: '12px',
+                                marginTop: '70px',
+                                width: 150,
+                                height: 150,
+                                // border: '2px dashed #E64646',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 justifyContent: 'center',
-                                alignItems: 'center',
-                                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)'
+                                alignItems: 'center'
                             }}
                         >
-                            <Icon28HeartBrokenOutline fill="#ffffff" width={50} height={50} />
-                            <Title level="3" weight="bold" style={{ color: '#ffffff' }}>Unfriendly</Title>
+                            <Icon28CancelCircleOutline fill="#E64646" width={50} height={50} />
+                            <Title level="2" weight="bold">Unfriendly</Title>
                         </Div>
                     </Div>
-
-                    {/* Кнопка завершения игры */}
-                    <Div style={{ marginTop: 40 }}>
-                        <Button size="l" stretched onClick={finishGame} disabled={userAnswers.length !== questions.length}>
+                    <Div style={{ marginTop: 16}}>
+                        <Button size="l" stretched onClick={finishGame} disabled={userAnswers.length !== questions.length} style={{backgroundColor:'#1673DB', opacity:1, color:'#FFF'}}>
                             Завершить игру
                         </Button>
                     </Div>
                 </Group>
+</div>
             </Panel>
 
-            {/* Панель с результатами */}
             <Panel id="result">
                 <PanelHeader>Результат</PanelHeader>
                 <Group>
@@ -145,6 +137,18 @@ const QuizGame = () => {
                         <Title level="1" weight="bold">Игра окончена!</Title>
                         <Placeholder>
                             Вы правильно распределили {score} из {questions.length} вопросов.
+                            {score === questions.length && (
+                                <p>Ты настоящий член ITMO.FAMILY!</p>
+                            )}
+                            {score > questions.length / 2 && score < questions.length && (
+                                <p>Похоже, ты уже хорошо знаком с нашими ценностями</p>
+                            )}
+                            {score <= questions.length / 2 && score > 0 && (
+                                <p>Неплохо, но есть куда стремиться. Может, сходить на ITMO FAMILY DAY?</p>
+                            )}
+                            {score === 0 && (
+                                <p>Срочно подключайся на наши friendly vibes</p>
+                            )}
                         </Placeholder>
                         <Button size="l" stretched onClick={() => window.location.reload()}>
                             Начать заново
