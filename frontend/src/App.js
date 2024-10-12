@@ -3,6 +3,8 @@ import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
 
 import { DEFAULT_VIEW_PANELS } from './routes';
 import {BeFriendly, BeItmo, Selection} from './panels/index.js';
+import {Start} from './panels/Start.js';
+import {Introduction} from './panels/introduction/Introduction.js';
 
 export const App = () => {
   const { panel: activePanel = DEFAULT_VIEW_PANELS.HOME } = useActiveVkuiLocation();
@@ -11,10 +13,11 @@ export const App = () => {
     <SplitLayout>
       <SplitCol>
         <View activePanel={activePanel}>
-          {/*<QuizGame id="game" />*/}
           <BeItmo id="be-itmo"/>
           <BeFriendly id="be-friendly"/>
           <Selection id="selection"/>
+          <Start id='start' />
+          <Introduction id='intro' />
         </View>
       </SplitCol>
     </SplitLayout>
