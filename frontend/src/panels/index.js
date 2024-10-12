@@ -1,2 +1,5 @@
-export { Persik } from './Persik';
-export { Home } from './Home';
+export {Persik} from './Persik';
+export {Selection} from './Selection.js';
+export {Home} from './Home';
+export {BeItmo} from './BeItmo.js';
+export {BeFriendly} from './BeFriendly.js';
