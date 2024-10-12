@@ -2,7 +2,7 @@ spring:
     application:
         name: itmokka
     datasource:
-        url: jdbc:postgresql://localhost:5432/itmokka
+        url: jdbc:postgresql://postgresql:5432/itmokka
         username: admin
         password: password
         driver-class-name: org.postgresql.Driver
