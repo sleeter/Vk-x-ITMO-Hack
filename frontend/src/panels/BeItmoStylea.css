@@ -28,3 +28,20 @@
 .hover-image:hover + .hover-text {
     opacity: 1; /* Появляется при наведении на изображение */
 }
+.hover-card:hover {
+    opacity: 1;
+}
+.hover-card {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0.7;
+}
+
+/* Изменение прозрачности на 100% при наведении */
+.hover-card:hover {
+    opacity: 1;
+}
+
+/* Стиль для ссылок, чтобы убрать подчеркивание и не нарушать стиль карточек */
+.card-link {
+    text-decoration: none;
+}

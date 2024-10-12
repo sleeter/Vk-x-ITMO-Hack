@@ -25,40 +25,101 @@ export const BeItmo = () => {
             </CardGrid>
 
             {/* Мелкие карточки */}
-            <CardGrid size="s" spaced style={{ marginTop: 20, display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', width: '100%' }}>
-                <Card style={{ backgroundColor: '#E74C3C', borderRadius: 10, opacity: 0.7, width: '150px', height: '150px', position: 'relative' }}>
-                    <div style={{ color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%' }}>
-                        be healthy
-                    </div>
-                </Card>
-                <Card style={{ backgroundColor: '#27AE60', borderRadius: 10, opacity: 0.7, width: '150px', height: '150px', position: 'relative' }}>
-                    <div style={{ color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%' }}>
-                        be eco
-                    </div>
-                </Card>
-                <Card style={{ backgroundColor: '#E91E63', borderRadius: 10, opacity: 0.7, width: '150px', height: '150px', position: 'relative' }}>
-                    <div style={{ color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%' }}>
-                        be friendly
-                    </div>
-                </Card>
+            <CardGrid size="s" spaced style={{
+                marginTop: 20,
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '10px',
+                flexWrap: 'wrap',
+                width: '100%'
+            }}>
+                <a href="/healthy" className="card-link">
+                    <Card className="hover-card" style={{
+                        backgroundColor: '#E74C3C',
+                        opacity: 0.7,
+                        borderRadius: 10,
+                        width: '150px',
+                        height: '150px',
+                        position: 'relative'
+                    }}>
+                        <div style={{color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%'}}>
+                            be healthy
+                        </div>
+                    </Card>
+                </a>
+                <a href="/#" className="card-link">
+                    <Card className="hover-card" style={{
+                        backgroundColor: '#27AE60',
+                        borderRadius: 10,
+                        opacity: 0.7,
+                        width: '150px',
+                        height: '150px',
+                        position: 'relative'
+                    }}>
+                        <div style={{color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%'}}>
+                            be eco
+                        </div>
+                    </Card>
+                </a>
+                <a href="/#" className="card-link">
+                    <Card className="hover-card" style={{
+                        backgroundColor: '#E91E63',
+                        borderRadius: 10,
+                        opacity: 0.7,
+                        width: '150px',
+                        height: '150px',
+                        position: 'relative'
+                    }}>
+                        <div style={{color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%'}}>
+                            be friendly
+                        </div>
+                    </Card>
+                </a>
             </CardGrid>
-            <CardGrid size="s" spaced style={{ justifyContent: 'center', gap: '10px', flexWrap: 'wrap', width: '100%' }}>
-                <Card style={{ backgroundColor: '#9B59B6', borderRadius: 10, opacity: 0.7, width: '150px', height: '150px', position: 'relative' }}>
-                    <div style={{ color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%' }}>
-                        be pro
-                    </div>
-                </Card>
-                <Card style={{ backgroundColor: '#3498DB', borderRadius: 10, opacity: 0.7, width: '150px', height: '150px', position: 'relative' }}>
-                    <div style={{ color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%' }}>
-                        be fit
-                    </div>
-                </Card>
-                <Card style={{ backgroundColor: '#E67E22', borderRadius: 10, opacity: 0.7, width: '150px', height: '150px', position: 'relative' }}>
-                    <div style={{ color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%' }}>
-                        be open
-                    </div>
-                </Card>
+            <CardGrid size="s" spaced style={{justifyContent: 'center', gap: '10px', flexWrap: 'wrap', width: '100%'}}>
+                <a href="/#" className="card-link">
+                    <Card className="hover-card" style={{
+                        backgroundColor: '#9B59B6',
+                        borderRadius: 10,
+                        opacity: 0.7,
+                        width: '150px',
+                        height: '150px',
+                        position: 'relative'
+                    }}>
+                        <div style={{color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%'}}>
+                            be pro
+                        </div>
+                    </Card>
+                </a>
+                <a href="/healthy" className="card-link">
+                    <Card className="hover-card" style={{
+                        backgroundColor: '#3498DB',
+                        borderRadius: 10,
+                        opacity: 0.7,
+                        width: '150px',
+                        height: '150px',
+                        position: 'relative'
+                    }}>
+                        <div style={{color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%'}}>
+                            be fit
+                        </div>
+                    </Card>
+                </a>
+                <a href="/healthy" className="card-link">
+                    <Card className="hover-card" style={{
+                        backgroundColor: '#E67E22',
+                        borderRadius: 10,
+                        opacity: 0.7,
+                        width: '150px',
+                        height: '150px',
+                        position: 'relative'
+                    }}>
+                        <div style={{color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%'}}>
+                            be open
+                        </div>
+                    </Card>
+                </a>
             </CardGrid>
         </Group>
-    );
+);
 };
