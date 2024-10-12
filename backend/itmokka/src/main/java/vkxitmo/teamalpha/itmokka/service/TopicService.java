@@ -26,7 +26,7 @@ public class TopicService {
     final Integer MAXSIZEOFTASKS = 4;
 
     public List<TopicResponse> getMainTopics() {
-        return Arrays.stream(Topics.values()).filter(t -> t.getLevel().equals(1)).map(topicMapper::TopicEnumToTopicResponse).toList();
+        return Arrays.stream(Topics.values()).filter(t -> t.getLevel().equals(1)).map(t -> topicMapper.TopicEnumToTopicResponse(t.ordinal(), t)).toList();
     }
     // TODO: maybe need vk user id
     public TopicInfoResponse getTopicInfo(Long id) {
@@ -34,7 +34,7 @@ public class TopicService {
         List<TopicResponse> topicResponseList = null;
         List<TaskResponse> taskResponseList = null;
         if(id == Topics.BEITMO.ordinal()) {
-            topicResponseList = Arrays.stream(Topics.values()).filter(t -> t.getLevel().equals(2)).map(topicMapper::TopicEnumToTopicResponse).toList();
+            topicResponseList = Arrays.stream(Topics.values()).filter(t -> t.getLevel().equals(2)).map(t -> topicMapper.TopicEnumToTopicResponse(t.ordinal(), t)).toList();
         } else {
             // TODO: for this
             taskResponseList = taskService.getTasks(topic).stream().limit(MAXSIZEOFTASKS).map(taskMapper::taskToTaskResponse).toList();

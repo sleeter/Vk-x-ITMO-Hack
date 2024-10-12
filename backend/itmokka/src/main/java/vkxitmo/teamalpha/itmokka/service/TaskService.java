@@ -1,12 +1,14 @@
 package vkxitmo.teamalpha.itmokka.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vkxitmo.teamalpha.itmokka.dto.request.TakedTaskRequest;
 import vkxitmo.teamalpha.itmokka.dto.response.TaskInfoResponse;
 import vkxitmo.teamalpha.itmokka.enumeration.Status;
 import vkxitmo.teamalpha.itmokka.mapper.TaskMapper;
 import vkxitmo.teamalpha.itmokka.model.TakedTask;
+import vkxitmo.teamalpha.itmokka.model.TakedTaskId;
 import vkxitmo.teamalpha.itmokka.model.Task;
 import vkxitmo.teamalpha.itmokka.model.Topic;
 import vkxitmo.teamalpha.itmokka.repository.TakedTaskRepository;
@@ -31,7 +33,10 @@ public class TaskService {
         return taskMapper.taskToTaskInfoResponse(task);
     }
     public void insertTakedTask(TakedTaskRequest takedTaskRequest) {
-        TakedTask task = taskMapper.takedTaskRequestToTakedTask(takedTaskRequest);
+        TakedTaskId id = taskMapper.userAndTaskIdToTakedTaskId(takedTaskRequest.userId(), takedTaskRequest.taskId());
+
+        TakedTask task = taskMapper.takedTaskRequestToTakedTask(id, takedTaskRequest.status());
+
         Optional<TakedTask> opt = takedTaskRepository.findById(task.getId());
         TakedTask t = null;
         if(opt.isPresent()) {
