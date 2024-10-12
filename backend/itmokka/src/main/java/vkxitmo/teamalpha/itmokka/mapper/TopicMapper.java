@@ -15,8 +15,7 @@ import java.util.List;
 @Mapper(config = MapstructConfig.class)
 @Component
 public interface TopicMapper {
-    @Mapping(target = "id", source = "topics.ordinal()")
-    TopicResponse TopicEnumToTopicResponse(Topics topics);
+    TopicResponse TopicEnumToTopicResponse(Integer id, Topics topics);
 
     TopicInfoResponse TopicToTopicInfoResponse(Topic topic, List<TopicResponse> subtopics, List<TaskResponse> tasks);
 }
