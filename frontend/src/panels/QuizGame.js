@@ -56,78 +56,78 @@ const QuizGame = () => {
             <Panel id="game">
                 <PanelHeader>Викторина</PanelHeader>
                 <div style={{height: 'calc(100vh - var(--vkui_internal--panel_header_height) - 18px)', backgroundImage: `url(${back})`, backgroundSize: 'cover'}}>
-                <Group style={{  }}>
-                    <Div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
-                        {questions.map((question) =>
-                            !userAnswers.some((a) => a.id === question.id) ? (
-                                <Div
-                                    key={question.id}
-                                    draggable
-                                    onDragStart={() => handleDragStart(question)}
-                                    style={{
-                                        width: 100,
-                                        height: 100,
-                                        backgroundColor: '#1673DB',
-                                        color:'#fff',
-                                        fontWeight:500,
-                                        borderRadius:'20px',
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        border: '3px solid #1366c2',
-                                        cursor: 'grab'
-                                    }}
-                                >
-                                    {question.text}
-                                </Div>
-                            ) : null
-                        )}
-                    </Div>
-                    {/* Зоны для перетаскивания */}
-                    <Div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                        <Div
-                            onDragOver={(e) => e.preventDefault()}
-                            onDrop={() => handleDrop('friendly')}
-                            style={{
-                                marginTop: '70px',
-                                width: 150,
-                                height: 150,
-                                // border: '2px dashed #4BB34B',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                alignItems: 'center'
-                            }}
-                        >
-                            <Icon28CheckCircleOutline fill="#4BB34B" width={50} height={50} />
-                            <Title level="2" weight="bold">Friendly</Title>
+                    <Group style={{  }}>
+                        <Div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
+                            {questions.map((question) =>
+                                !userAnswers.some((a) => a.id === question.id) ? (
+                                    <Div
+                                        key={question.id}
+                                        draggable
+                                        onDragStart={() => handleDragStart(question)}
+                                        style={{
+                                            width: 100,
+                                            height: 100,
+                                            backgroundColor: '#1673DB',
+                                            color:'#fff',
+                                            fontWeight:500,
+                                            borderRadius:'20px',
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            border: '3px solid #1366c2',
+                                            cursor: 'grab'
+                                        }}
+                                    >
+                                        {question.text}
+                                    </Div>
+                                ) : null
+                            )}
                         </Div>
+                        {/* Зоны для перетаскивания */}
+                        <Div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                            <Div
+                                onDragOver={(e) => e.preventDefault()}
+                                onDrop={() => handleDrop('friendly')}
+                                style={{
+                                    marginTop: '70px',
+                                    width: 150,
+                                    height: 150,
+                                    // border: '2px dashed #4BB34B',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }}
+                            >
+                                <Icon28CheckCircleOutline fill="#4BB34B" width={50} height={50} />
+                                <Title level="2" weight="bold">Friendly</Title>
+                            </Div>
 
-                        <Div
-                            onDragOver={(e) => e.preventDefault()}
-                            onDrop={() => handleDrop('unfriendly')}
-                            style={{
-                                marginTop: '70px',
-                                width: 150,
-                                height: 150,
-                                // border: '2px dashed #E64646',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                alignItems: 'center'
-                            }}
-                        >
-                            <Icon28CancelCircleOutline fill="#E64646" width={50} height={50} />
-                            <Title level="2" weight="bold">Unfriendly</Title>
+                            <Div
+                                onDragOver={(e) => e.preventDefault()}
+                                onDrop={() => handleDrop('unfriendly')}
+                                style={{
+                                    marginTop: '70px',
+                                    width: 150,
+                                    height: 150,
+                                    // border: '2px dashed #E64646',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }}
+                            >
+                                <Icon28CancelCircleOutline fill="#E64646" width={50} height={50} />
+                                <Title level="2" weight="bold">Unfriendly</Title>
+                            </Div>
                         </Div>
-                    </Div>
-                    <Div style={{ marginTop: 16}}>
-                        <Button size="l" stretched onClick={finishGame} disabled={userAnswers.length !== questions.length} style={{backgroundColor:'#1673DB', opacity:1, color:'#FFF'}}>
-                            Завершить игру
-                        </Button>
-                    </Div>
-                </Group>
-</div>
+                        <Div style={{ marginTop: 16}}>
+                            <Button size="l" stretched onClick={finishGame} disabled={userAnswers.length !== questions.length} style={{backgroundColor:'#1673DB', opacity:1, color:'#FFF'}}>
+                                Завершить игру
+                            </Button>
+                        </Div>
+                    </Group>
+                </div>
             </Panel>
 
             <Panel id="result">
