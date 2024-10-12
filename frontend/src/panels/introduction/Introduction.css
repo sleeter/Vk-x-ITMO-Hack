@@ -1,0 +1,38 @@
+.greetings-box {
+    display: flex;
+    justify-content: center;
+}
+
+.greetings-box img:nth-child(1) {
+    width: 250px;
+}
+
+.greetings-box img:nth-child(2) {
+    width: 300px;
+}
+
+button {
+    position: absolute;
+    bottom: 3vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+    padding: 12px 65px;
+    background-color: #FFF;
+    border: 2px solid #FFF;
+    border-radius: 10px;
+    box-shadow: 2px 5px 5px #00000031;
+    color: #205393;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 500px) {
+    .greetings-box img:nth-child(1) {
+        width: 150px;
+    }
+
+    .greetings-box img:nth-child(2) {
+        width: 190px;
+    }
+}
