@@ -3,7 +3,7 @@ import bridge from '@vkontakte/vk-bridge';
 import { View, SplitLayout, SplitCol } from '@vkontakte/vkui';
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
 
-import { Persik, Home , Selection, BeItmo} from './panels';
+import { Persik, Home , Selection, BeItmo, BeFriendly} from './panels';
 import { DEFAULT_VIEW_PANELS } from './routes';
 
 export const App = () => {
@@ -28,6 +28,7 @@ export const App = () => {
             <Persik id="persik" />
             <Selection id="selection"/>
             <BeItmo id="beItmo"/>
+            <BeFriendly id="beFriendly"/>
           </View>
         </SplitCol>
       </SplitLayout>

@@ -15,6 +15,7 @@ export const DEFAULT_VIEW_PANELS = {
   PERSIK: 'persik',
   SELECTION: 'selection',
   BEITMO: 'beItmo',
+  BEFRIENDLY: 'beFriendly'
 };
 
 export const routes = RoutesConfig.create([
@@ -24,6 +25,7 @@ export const routes = RoutesConfig.create([
       createPanel(DEFAULT_VIEW_PANELS.PERSIK, `/${DEFAULT_VIEW_PANELS.PERSIK}`, []),
       createPanel(DEFAULT_VIEW_PANELS.SELECTION, `/${DEFAULT_VIEW_PANELS.SELECTION}`, []),
       createPanel(DEFAULT_VIEW_PANELS.BEITMO, `/${DEFAULT_VIEW_PANELS.BEITMO}`, []),
+      createPanel(DEFAULT_VIEW_PANELS.BEFRIENDLY, `/${DEFAULT_VIEW_PANELS.BEFRIENDLY}`, []),
 
     ]),
   ]),
