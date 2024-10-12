@@ -1,126 +1,70 @@
-import { Card, CardGrid, Group } from "@vkontakte/vkui";
+import {Card, CardGrid, ContentCard, Group} from "@vkontakte/vkui";
 import beITMO from '../assets/beITMO.jpg';
 import back from '../assets/back.svg';
-import './BeItmoStylea.css';
 
 export const BeItmo = () => {
     return (
-        <Group  style={{ backgroundImage: `url(${back})`, minHeight: '100vh',  margin: '0 auto', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+        <Group style={{
+            height: '100vh',
+            margin: 0,
+            padding: 0,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+        }}>
             {/* Главная картинка */}
-            <CardGrid size="l" spaced style={{  justifyContent: 'center' }}>
-                <Card style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
-                    <img
-                        src={beITMO}
-                        style={{
-                            maxWidth: "500px",
-                            height: "auto",
-                            borderRadius: 10,
-                        }}
-                        alt="Be ITMO"
-                        className="hover-image" // Применяем класс для эффекта
-                    />
-                    <div className="hover-text">Стиль жизни Университета ИТМО, основанный на принципах благополучия человека
-                        (well-being) и всестороннего развития членов ITMO Family.</div>
-                    <div style={{ paddingBottom: '0' }} />
-                </Card>
+            <CardGrid size="m" style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: '20px',
+                flexGrow: 0,
+            }}>
+                <ContentCard
+                    src={beITMO}
+                    alt="Picture of person's left hand with pink paint"
+                    header="Be ITMO"
+                    text="ITMO University's lifestyle based on the principles of human well-being
+                    (well-being) and comprehensive development of ITMO Family members."
+                    maxHeight={350}  // Ограничиваем максимальную высоту
+                    style={{
+                        width: '60%',
+                        margin: '0 auto',
+                    }}
+                />
             </CardGrid>
 
-            {/* Мелкие карточки */}
+            {/* Карточки */}
             <CardGrid size="s" spaced style={{
                 marginTop: 20,
                 display: 'flex',
+                flexDirection: 'row',
                 justifyContent: 'center',
-                gap: '10px',
+                gap: '20px 10px',
                 flexWrap: 'wrap',
-                width: '100%'
+                flexGrow: 0,
+                maxWidth: '500px'
             }}>
-                <a href="/healthy" className="card-link">
-                    <Card className="hover-card" style={{
-                        backgroundColor: '#E74C3C',
-                        opacity: 0.7,
-                        borderRadius: 10,
-                        width: '150px',
-                        height: '150px',
-                        position: 'relative'
-                    }}>
-                        <div style={{color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%'}}>
-                            be healthy
-                        </div>
-                    </Card>
-                </a>
-                <a href="/#" className="card-link">
-                    <Card className="hover-card" style={{
-                        backgroundColor: '#27AE60',
-                        borderRadius: 10,
-                        opacity: 0.7,
-                        width: '150px',
-                        height: '150px',
-                        position: 'relative'
-                    }}>
-                        <div style={{color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%'}}>
-                            be eco
-                        </div>
-                    </Card>
-                </a>
-                <a href="/#" className="card-link">
-                    <Card className="hover-card" style={{
-                        backgroundColor: '#E91E63',
-                        borderRadius: 10,
-                        opacity: 0.7,
-                        width: '150px',
-                        height: '150px',
-                        position: 'relative'
-                    }}>
-                        <div style={{color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%'}}>
-                            be friendly
-                        </div>
-                    </Card>
-                </a>
-            </CardGrid>
-            <CardGrid size="s" spaced style={{justifyContent: 'center', gap: '10px', flexWrap: 'wrap', width: '100%'}}>
-                <a href="/#" className="card-link">
-                    <Card className="hover-card" style={{
-                        backgroundColor: '#9B59B6',
-                        borderRadius: 10,
-                        opacity: 0.7,
-                        width: '150px',
-                        height: '150px',
-                        position: 'relative'
-                    }}>
-                        <div style={{color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%'}}>
-                            be pro
-                        </div>
-                    </Card>
-                </a>
-                <a href="/healthy" className="card-link">
-                    <Card className="hover-card" style={{
-                        backgroundColor: '#3498DB',
-                        borderRadius: 10,
-                        opacity: 0.7,
-                        width: '150px',
-                        height: '150px',
-                        position: 'relative'
-                    }}>
-                        <div style={{color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%'}}>
-                            be fit
-                        </div>
-                    </Card>
-                </a>
-                <a href="/healthy" className="card-link">
-                    <Card className="hover-card" style={{
-                        backgroundColor: '#E67E22',
-                        borderRadius: 10,
-                        opacity: 0.7,
-                        width: '150px',
-                        height: '150px',
-                        position: 'relative'
-                    }}>
-                        <div style={{color: 'white', fontSize: 16, textAlign: 'center', paddingTop: '30%'}}>
-                            be open
-                        </div>
-                    </Card>
-                </a>
+                {['be healthy', 'be eco', 'be Friendly', 'be pro', 'be fit', 'be open'].map((text, index) => (
+                    //TODO Переадрессация
+                    <a href={`/${text.replace(' ', '')}`} key={index} className="card-link" style={{textDecoration: 'none'}}>
+                        <Card className="hover-card" style={{
+                            backgroundColor: ['#E74C3C', '#27AE60', '#E91E63', '#9B59B6', '#3498DB', '#E67E22'][index],
+                            borderRadius: 10,
+                            width: '150px',
+                            height: '150px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}>
+                            <div style={{color: 'white', fontSize: 16, textAlign: 'center'}}>
+                                {text}
+                            </div>
+                        </Card>
+                    </a>
+                ))}
             </CardGrid>
         </Group>
-);
+    );
 };
