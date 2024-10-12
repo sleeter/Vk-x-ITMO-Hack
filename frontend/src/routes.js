@@ -12,14 +12,15 @@ export const DEFAULT_VIEW = 'default_view';
 
 export const DEFAULT_VIEW_PANELS = {
   START: 'start',
+  INTRO: 'intro',
   HOME: 'home',
-  PERSIK: 'persik',
 };
 
 export const routes = RoutesConfig.create([
   createRoot(DEFAULT_ROOT, [
     createView(DEFAULT_VIEW, [
       createPanel(DEFAULT_VIEW_PANELS.START, `/`, []),
+      createPanel(DEFAULT_VIEW_PANELS.INTRO, `/${DEFAULT_VIEW_PANELS.INTRO}`, []),
     ]),
   ]),
 ]);
