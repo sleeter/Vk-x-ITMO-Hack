@@ -1,10 +1,11 @@
 import { Card, CardGrid, Group } from "@vkontakte/vkui";
 import beITMO from '../assets/beITMO.jpg';
+import back from '../assets/back.svg';
 import './BeItmoStylea.css';
 
 export const BeItmo = () => {
     return (
-        <Group description="6 направлений 'be itmo' " style={{ backgroundColor: '#f5f5f5', minHeight: '100vh',  margin: '0 auto', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+        <Group  style={{ backgroundImage: `url(${back})`, minHeight: '100vh',  margin: '0 auto', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
             {/* Главная картинка */}
             <CardGrid size="l" spaced style={{  justifyContent: 'center' }}>
                 <Card style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
