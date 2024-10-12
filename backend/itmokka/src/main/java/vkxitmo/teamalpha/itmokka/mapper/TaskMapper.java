@@ -7,6 +7,7 @@ import vkxitmo.teamalpha.itmokka.dto.request.TakedTaskRequest;
 import vkxitmo.teamalpha.itmokka.dto.response.TaskInfoResponse;
 import vkxitmo.teamalpha.itmokka.dto.response.TaskResponse;
 import vkxitmo.teamalpha.itmokka.model.TakedTask;
+import vkxitmo.teamalpha.itmokka.model.TakedTaskId;
 import vkxitmo.teamalpha.itmokka.model.Task;
 
 @Mapper(config = MapstructConfig.class)
@@ -17,5 +18,7 @@ public interface TaskMapper {
 
     TaskInfoResponse taskToTaskInfoResponse(Task task);
 
-    TakedTask takedTaskRequestToTakedTask(TakedTaskRequest takedTaskRequest);
+    TakedTaskId userAndTaskIdToTakedTaskId(Long userId, Long taskId);
+
+    TakedTask takedTaskRequestToTakedTask(TakedTaskId id, String status);
 }
