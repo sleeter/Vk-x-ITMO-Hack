@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import { View, SplitLayout, SplitCol, ScreenSpinner } from '@vkontakte/vkui';
+import { View, SplitLayout, SplitCol } from '@vkontakte/vkui';
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
 
-import { Persik, Home } from './panels';
+import { Persik, Home , Selection, BeItmo} from './panels';
 import { DEFAULT_VIEW_PANELS } from './routes';
 
 export const App = () => {
@@ -21,13 +21,15 @@ export const App = () => {
   }, []);
 
   return (
-    <SplitLayout popout={popout}>
-      <SplitCol>
-        <View activePanel={activePanel}>
-          <Home id="home" fetchedUser={fetchedUser} />
-          <Persik id="persik" />
-        </View>
-      </SplitCol>
-    </SplitLayout>
+      <SplitLayout popout={popout}>
+        <SplitCol>
+          <View activePanel={activePanel}>
+            <Home id="home" fetchedUser={fetchedUser} />
+            <Persik id="persik" />
+            <Selection id="selection"/>
+            <BeItmo id="beItmo"/>
+          </View>
+        </SplitCol>
+      </SplitLayout>
   );
 };

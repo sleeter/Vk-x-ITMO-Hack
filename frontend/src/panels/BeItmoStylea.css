@@ -1,0 +1,30 @@
+
+.hover-image:hover {
+    filter: grayscale(100%) brightness(0.5) blur(8px);
+    transition: opacity 0.4s ease-in-out;
+
+}
+
+
+.hover-image:hover + .hover-text {
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+
+
+}
+.hover-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    opacity: 0; /* Изначально скрыт */
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+    pointer-events: none; /* Чтобы текст не мешал наведению на изображение */
+}
+
+.hover-image:hover + .hover-text {
+    opacity: 1; /* Появляется при наведении на изображение */
+}
