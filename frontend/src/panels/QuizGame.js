@@ -55,9 +55,20 @@ const QuizGame = () => {
         <View activePanel={activePanel}>
             <Panel id="game">
                 <PanelHeader>Викторина</PanelHeader>
-                <div style={{height: 'calc(100vh - var(--vkui_internal--panel_header_height) - 18px)', backgroundImage: `url(${back})`, backgroundSize: 'cover'}}>
+                <div style={{
+                    height: 'calc(100vh - var(--vkui_internal--panel_header_height) - 18px)',
+                    backgroundImage: `url(${back})`,
+                    backgroundSize: 'cover',
+                }}>
                     <Group style={{  }}>
-                        <Div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
+                        <Div style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            flexWrap: 'wrap',
+                            gap: '15px',
+                            justifyContent: 'space-around',
+                            marginBottom: 16,
+                        }}>
                             {questions.map((question) =>
                                 !userAnswers.some((a) => a.id === question.id) ? (
                                     <Div
