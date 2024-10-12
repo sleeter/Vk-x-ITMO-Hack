@@ -1,6 +1,6 @@
 import {Card, CardGrid, ContentCard, Group, Panel} from "@vkontakte/vkui";
 import beITMO from '../assets/beITMO.jpg';
-import back from '../assets/back.svg';
+// import back from '../assets/back.svg';
 import PropTypes from "prop-types";
 
 export const BeItmo = ({id}) => {
