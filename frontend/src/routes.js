@@ -27,6 +27,7 @@ export const routes = RoutesConfig.create([
       createPanel(DEFAULT_VIEW_PANELS.BEFRIENDLY, `/${DEFAULT_VIEW_PANELS.BEFRIENDLY}`, []),
       createPanel(DEFAULT_VIEW_PANELS.BEITMO, `/${DEFAULT_VIEW_PANELS.BEITMO}`, []),
       createPanel(DEFAULT_VIEW_PANELS.SELECTION, `/${DEFAULT_VIEW_PANELS.SELECTION}`, []),
+      createPanel(DEFAULT_VIEW_PANELS.GAME, `/${DEFAULT_VIEW_PANELS.GAME}`, []),
     ]),
   ]),
 ]);
