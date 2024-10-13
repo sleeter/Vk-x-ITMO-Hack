@@ -2,6 +2,7 @@ import {Icon28ArrowLeftOutline} from '@vkontakte/icons';
 import PropTypes from 'prop-types';
 import DarkLogo from '../assets/DarkLogo.svg';
 import LightLogo from '../assets/LightLogo.svg';
+import Itmokk from '../assets/Itmokk.svg';
 
 export const Header = ({ auth, isLight }) => {
     const isAuth = auth;
@@ -11,8 +12,8 @@ export const Header = ({ auth, isLight }) => {
 
     };
 
-    const fontColor = isLight ? '#fff' : '#1673DB';
-    const backColor = isLight ? '#1673DB' : '#fff';
+    const fontColor = isLight ? '#fff' : '#2483E4';
+    const backColor = isLight ? '#2483E4' : '#fff';
     const logo = isLight ? LightLogo : DarkLogo;
 
     return (
@@ -44,18 +45,29 @@ export const Header = ({ auth, isLight }) => {
                 color: fontColor,
                 fontSize: '20px',
             }}>
-                <span>ITMOKKA</span>
                 <img
                     src={logo}
                     alt='logo'
                     style={{
-                        width: '25px',
-                        height: '25px',
-                        marginTop: '-7px',
+                        width: '30px',
+                        marginTop: '-6px',
                     }}
                 />
+                <span>ITMOKKA</span>
             </div>
-            {isAuth && <div style={{color: fontColor}}>{money} ₽</div>}
+            {isAuth &&
+                <div style={{
+                    color: fontColor
+                }}>
+                    {money}
+                    <img
+                        src={Itmokk}
+                        alt='icon of money'
+                        style={{
+                            width: '30px',
+                        }}
+                    />
+                </div>}
         </div>
     );
 }
