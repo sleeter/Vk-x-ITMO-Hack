@@ -49,9 +49,8 @@ export const Header = ({ auth, isLight }) => {
                     src={logo}
                     alt='logo'
                     style={{
-                        width: '25px',
-                        height: '25px',
-                        marginTop: '-7px',
+                        width: '30px',
+                        marginTop: '-6px',
                     }}
                 />
             </div>
