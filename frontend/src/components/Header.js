@@ -2,16 +2,21 @@ import {Icon28ArrowLeftOutline} from '@vkontakte/icons';
 import PropTypes from 'prop-types';
 import DarkLogo from '../assets/DarkLogo.svg';
 import LightLogo from '../assets/LightLogo.svg';
+import Itmokk from '../assets/Itmokk.svg';
+import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
 
-export const Header = ({ auth, isLight }) => {
+export const Header = ({ isArrow, auth, isLight }) => {
+    const routeNavigator = useRouteNavigator();
+
     const isAuth = auth;
     const money = 100;
 
     const onBackClick = () => {
-
+        routeNavigator.back();
     };
 
-    const color = isLight ? '#fff' : '#1673DB';
+    const fontColor = isLight ? '#fff' : '#2483E4';
+    const backColor = isLight ? '#2483E4' : '#fff';
     const logo = isLight ? LightLogo : DarkLogo;
 
     return (
@@ -21,7 +26,7 @@ export const Header = ({ auth, isLight }) => {
             justifyContent: 'space-between',
             padding: '20px 3vw',
             alignItems: 'center',
-            backgroundColor: '#ffffff00',
+            backgroundColor: backColor,
             fontFamily: 'font-family: "Inter", sans-serif',
             position: 'fixed',
             top: 0,
@@ -30,7 +35,13 @@ export const Header = ({ auth, isLight }) => {
             zIndex: 1000,
         }}>
             <div onClick={onBackClick}>
-                <Icon28ArrowLeftOutline style={{color: color}}/>
+                {isArrow &&
+                    <Icon28ArrowLeftOutline
+                        style={{
+                            color: fontColor,
+                            cursor: 'pointer',
+                        }}
+                    />}
             </div>
             <div style={{
                 display: 'flex',
@@ -40,26 +51,42 @@ export const Header = ({ auth, isLight }) => {
                 position: 'absolute',
                 left: '50%',
                 transform: 'translateX(-50%)',
-                color: color,
+                color: fontColor,
                 fontSize: '20px',
             }}>
-                <span>ITMOKKA</span>
                 <img
                     src={logo}
                     alt='logo'
                     style={{
-                        width: '25px',
-                        height: '25px',
-                        marginTop: '-7px',
+                        width: '30px',
+                        marginTop: '-6px',
                     }}
                 />
+                <span>ITMOKKA</span>
             </div>
-            {isAuth && <div style={{color: color}}>{money} ₽</div>}
+            {isAuth &&
+                <div style={{
+                    color: fontColor
+                }}>
+                    {money}
+                    <img
+                        src={Itmokk}
+                        alt='icon of money'
+                        style={{
+                            width: '30px',
+                        }}
+                    />
+                </div>}
         </div>
     );
 }
 
 Header.propTypes = {
+    isArrow: PropTypes.bool,
     auth: PropTypes.bool.isRequired,
     isLight: PropTypes.bool.isRequired,
+};
+
+Header.defaultProps = {
+    isArrow: true,
 };

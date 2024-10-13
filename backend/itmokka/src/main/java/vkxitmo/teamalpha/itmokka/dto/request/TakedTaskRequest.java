@@ -1,4 +1,8 @@
 package vkxitmo.teamalpha.itmokka.dto.request;
 
-public record TakedTaskRequest(Long userId, Long taskId, String status) {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record TakedTaskRequest(
+        @JsonProperty("user_id") Long userId,
+        @JsonProperty("task_id") Long taskId, String status) {
 }

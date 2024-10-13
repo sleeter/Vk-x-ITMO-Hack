@@ -27,7 +27,7 @@ export const Task = () => {
                         header="Name (подтягивать с бэка)"
                         text="Описание (Подтягивать с бэка)"
                         maxHeight={500}
-                        style={{width: '100%'}}
+                        style={{width: '100%', marginTop: '70px',}}
                     />
                 </CardGrid>
 
@@ -70,7 +70,7 @@ export const Task = () => {
                 </Group>
 
                 {/* Кнопка по центру */}
-                <Button size="l" style={{maxWidth: '400px', width: '100%', marginTop: '30px'}}>Начать</Button>
+                <Button size="l" style={{maxWidth: '400px', width: '100%', marginTop: '20px'}}>Начать</Button>
             </Group>
 
             {/* Адаптация под мобильные */}
@@ -79,6 +79,7 @@ export const Task = () => {
                 @media (max-width: 768px) {
                     .vkuiCard {
                         width: 100% !important;
+                        // margin-top: 70px !important;
                     }
                 }
                 `}
