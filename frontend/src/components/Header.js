@@ -66,7 +66,7 @@ export const Header = ({ isArrow, auth, isLight }) => {
             </div>
             {isAuth &&
                 <div style={{
-                    color: fontColor,
+                    color: '#fdda2c',
                     display: 'flex',
                     flexDirection: 'row',
                     alignItems: 'center',
@@ -78,7 +78,7 @@ export const Header = ({ isArrow, auth, isLight }) => {
                         src={itmokk}
                         alt='icon of money'
                         style={{
-                            width: '50px',
+                            width: '40px',
                         }}
                     />
                 </div>}
