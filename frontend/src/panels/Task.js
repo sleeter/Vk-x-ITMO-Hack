@@ -4,7 +4,11 @@ import Calendar from '../assets/Calendar.svg';
 import Itmokk from '../assets/itmokk.svg';
 import List from '../assets/List.svg';
 
-export const Task = () => {
+export const Task = ({ id }) => {
+    const tasks = [
+        {id: 1, picture: 'https://cdn.culture.ru/images/ed6e78b6-c524-5e73-9f82-7ae0ec88160c', name: 'Я на friendly vibes', description: 'Пройди квиз и докажи, что ты шаришь за be friendly be ITMO!'}
+    ];
+
     return (
         <Panel id="profile">
             <Header auth={true} isLight={false}/>
@@ -58,16 +62,6 @@ export const Task = () => {
                         <div>Дедлайн:</div>
                     </Card>
                 </CardGrid>
-
-                {/* Карточка с заданием */}
-                <Group mode="plain" header={<Title level="3" mode="secondary">Задание</Title>}
-                       style={{width: '100%', maxWidth: '400px'}}>
-                    <CardGrid size="l">
-                        <Card style={{textAlign: 'center', padding: 20}}>
-                            <div>Задание</div>
-                        </Card>
-                    </CardGrid>
-                </Group>
 
                 {/* Кнопка по центру */}
                 <Button size="l" style={{maxWidth: '400px', width: '100%', marginTop: '20px'}}>Начать</Button>
