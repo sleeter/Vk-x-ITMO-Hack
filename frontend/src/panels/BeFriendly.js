@@ -4,6 +4,7 @@ import beFriendly from "../assets/BeFriendly.svg";
 import PropTypes from "prop-types";
 import {Header} from '../components/Header.js';
 import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
+import {Footer} from "../components/Footer.js";
 
 export const BeFriendly = ({ id }) => {
     const routeNavigator = useRouteNavigator();
@@ -22,14 +23,16 @@ export const BeFriendly = ({ id }) => {
             <Group style={{
                 backgroundImage: `url(${back})`,
                 minHeight: '100vh',
-                margin: '0 auto',
+                margin: 'auto',
+                marginTop: '3%',
                 display: 'flex',
                 justifyContent: 'center',
                 flexDirection: 'column'
             }}>
                 <img src={beFriendly}
                      style={{
-                         width: '40%',
+                         maxWidth: '100%',  // Теперь картинка будет занимать всю доступную ширину
+                         height: 'auto',    // Высота будет пропорциональной ширине
                          alignItems: 'center',
                          justifyContent: 'center',
                          marginLeft: 'auto',
@@ -38,8 +41,7 @@ export const BeFriendly = ({ id }) => {
                      }}
                 />
 
-
-                <Group description="Tests">
+                <Group description="Задания">
                     <CardScroll size="s">
                         <Card
                             style={{
@@ -134,6 +136,8 @@ export const BeFriendly = ({ id }) => {
                     </CardScroll>
                 </Group>
             </Group>
+
+            <Footer />
         </Panel>
     );
 };

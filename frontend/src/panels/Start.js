@@ -22,8 +22,10 @@ export const Start = ({id}) => {
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100vh',
+
                 backgroundColor: '#2483E4',
                 justifyContent: 'space-between',
+
             }}>
                 <Header isArrow={false} auth={true} isLight={true}/>
                 <div style={{
