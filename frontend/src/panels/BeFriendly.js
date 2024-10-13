@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Group, Panel, Title, ContentCard, Div, Spinner, Snackbar, Avatar } from "@vkontakte/vkui";
+import {Group, Panel, Title, ContentCard, Div, Spinner, Snackbar, Avatar, HorizontalScroll} from "@vkontakte/vkui";
 import { Icon16Done } from '@vkontakte/icons';
 import vkBridge from '@vkontakte/vk-bridge';
 import PropTypes from 'prop-types';
@@ -41,8 +41,6 @@ export const BeFriendly = ({ id }) => {
     // При монтировании компонента загружаем данные для категории
     useEffect(() => {
         fetchCategoryData('be friendly');  // Здесь имя категории
-
-
     }, []);
 
     // Обработчик для "Мест" — вызов сканера QR-кодов
@@ -154,10 +152,16 @@ export const BeFriendly = ({ id }) => {
 
                                     {/* Категория Мероприятия */}
                                     {categorizedTasks.events.length > 0 && (
-                                        <Group>
-                                            <Title level="2" weight="bold">Мероприятия</Title>
-                                            {renderTasks(categorizedTasks.events, () => routeNavigator.push('/task'))}
-                                        </Group>
+
+                                            <Group>
+                                                <Title level="2" weight="bold">Мероприятия</Title>
+                                                <HorizontalScroll>
+                                                    <div style={{ display: 'flex', gap: '10px' }}>
+                                                        {renderTasks(categorizedTasks.events, () => routeNavigator.push('/task'))}
+                                                    </div>
+                                                </HorizontalScroll>
+                                            </Group>
+
                                     )}
 
                                     {/* Категория Места */}
