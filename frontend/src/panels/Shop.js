@@ -58,7 +58,7 @@ const Shop = () => {
                                     header={
                                         <div style={{display: 'flex', alignItems: 'center'}}>
                                             <Text weight="medium" style={{marginRight: '4px'}}>{service.price}</Text>
-                                            <img src={itmokk} alt="Itmokk" style={{width: '30px'}}/>
+                                            <img src={itmokk} alt="Itmokk" style={{width: '20px'}}/>
                                         </div>
                                     }
                                     text="Используй свои итмокки на полную!"
@@ -87,7 +87,7 @@ const Shop = () => {
                                     header={
                                         <div style={{display: 'flex', alignItems: 'center'}}>
                                             <Text weight="medium" style={{marginRight: '4px'}}>{discount.price}</Text>
-                                            <img src={itmokk} alt="Itmokk" style={{width: '30px'}}/>
+                                            <img src={itmokk} alt="Itmokk" style={{width: '20px'}}/>
                                         </div>
                                     }
                                     text="Не упусти выгоду!"
@@ -114,7 +114,7 @@ const Shop = () => {
                                     header={
                                         <div style={{display: 'flex', alignItems: 'center'}}>
                                             <Text weight="medium" style={{marginRight: '4px'}}>{product.price}</Text>
-                                            <img src={itmokk} alt="Itmokk" style={{width: '30px'}}/>
+                                            <img src={itmokk} alt="Itmokk" style={{width: '20px'}}/>
                                         </div>
                                     }
                                     subtitle={

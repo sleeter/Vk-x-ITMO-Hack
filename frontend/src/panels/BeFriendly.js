@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Group, Panel, Title, ContentCard, Div, Spinner, Snackbar, Avatar } from "@vkontakte/vkui";
+import {Group, Panel, Title, ContentCard, Div, Spinner, Snackbar, Avatar, HorizontalScroll} from "@vkontakte/vkui";
 import { Icon16Done } from '@vkontakte/icons';
 import vkBridge from '@vkontakte/vk-bridge';
 import PropTypes from 'prop-types';
 import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
 import { Header } from '../components/Header.js';
 import { Footer } from '../components/Footer.js';
-import place from "../assets/place.png";
 
 
 // URL API и пример ID пользователя
@@ -41,8 +40,6 @@ export const BeFriendly = ({ id }) => {
     // При монтировании компонента загружаем данные для категории
     useEffect(() => {
         fetchCategoryData('be friendly');  // Здесь имя категории
-
-
     }, []);
 
     // Обработчик для "Мест" — вызов сканера QR-кодов
@@ -93,18 +90,26 @@ export const BeFriendly = ({ id }) => {
             {taskList.map((task) => {
                 let picturePath;
                 if (task.picture === 'place') {
-                    picturePath = place;
+                    picturePath = `https://optim.tildacdn.com/stor3263-6138-4962-a634-353634373636/-/resize/600x600/-/format/webp/37813807.png`;
+                } else if (task.picture === 'event') {
+                    picturePath =  `https://optim.tildacdn.com/tild3431-3063-4533-b136-333865666339/-/resize/600x600/-/format/webp/_pdfio_1.png`;
+                } else {
+                    picturePath = `https://optim.tildacdn.com/tild3262-3535-4565-a339-313233316335/-/resize/600x600/-/format/webp/_1.png`;
                 }
                 return (
                     <ContentCard
-                    key={task.id}
-                    src={picturePath || 'https://via.placeholder.com/150'}  // Картинка задачи или заглушка
-                    header={task.name}
-                    description={`Набери ${task.points} баллов`}
-                    caption="Нажми для подробностей"
-                    onClick={handleCardClick}  // Логика клика
-                    style={{ cursor: 'pointer', marginBottom: '16px' }}
-                />
+                        key={task.id}
+                        src={picturePath || 'https://via.placeholder.com/150'}  // Картинка задачи или заглушка
+                        header={task.name}
+                        description={`Набери ${task.points} баллов`}
+                        caption="Нажми для подробностей"
+                        onClick={handleCardClick}  // Логика клика
+                        style={{
+                            cursor: 'pointer',
+                            marginBottom: '16px',
+                            width: '20rem'
+                        }}
+                    />
             )})}
         </Div>
     );
@@ -140,16 +145,22 @@ export const BeFriendly = ({ id }) => {
                                     {categorizedTasks.tests.length > 0 && (
                                         <Group>
                                             <Title level="2" weight="bold">Тесты</Title>
-                                            {renderTasks(categorizedTasks.tests, () => routeNavigator.push('/task'))}
+                                            {renderTasks(categorizedTasks.tests, () => routeNavigator.push(`/task?id=${1}`))}
                                         </Group>
                                     )}
 
                                     {/* Категория Мероприятия */}
                                     {categorizedTasks.events.length > 0 && (
-                                        <Group>
-                                            <Title level="2" weight="bold">Мероприятия</Title>
-                                            {renderTasks(categorizedTasks.events, () => routeNavigator.push('/task'))}
-                                        </Group>
+
+                                            <Group>
+                                                <Title level="2" weight="bold">Мероприятия</Title>
+                                                <HorizontalScroll>
+                                                    <div style={{ display: 'flex', gap: '10px' }}>
+                                                        {renderTasks(categorizedTasks.events, () => routeNavigator.push(`/task?id=${2}`))}
+                                                    </div>
+                                                </HorizontalScroll>
+                                            </Group>
+
                                     )}
 
                                     {/* Категория Места */}

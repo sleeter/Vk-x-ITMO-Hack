@@ -78,7 +78,7 @@ export const Header = ({ isArrow, auth, isLight }) => {
                         src={itmokk}
                         alt='icon of money'
                         style={{
-                            width: '40px',
+                            width: '30px',
                         }}
                     />
                 </div>}
