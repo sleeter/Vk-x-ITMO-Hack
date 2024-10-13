@@ -13,7 +13,7 @@ export const Introduction = ({ id }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100vh',
-                backgroundColor: '#1673DB',
+                backgroundColor: '#2483E4',
                 position: 'relative',
             }}>
                 <Header auth={true} isLight={true}/>

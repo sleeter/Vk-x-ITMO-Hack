@@ -84,7 +84,7 @@ const QuizGame = () => {
                                         style={{
                                             width: 100,
                                             height: 100,
-                                            backgroundColor: '#1673DB',
+                                            backgroundColor: '#2483E4',
                                             color:'#fff',
                                             fontWeight:500,
                                             borderRadius:'20px',
@@ -139,7 +139,7 @@ const QuizGame = () => {
                             </Div>
                         </Div>
                         <Div style={{ marginTop: 16}}>
-                            <Button size="l" stretched onClick={finishGame} disabled={userAnswers.length !== questions.length} style={{backgroundColor:'#1673DB', opacity:1, color:'#FFF'}}>
+                            <Button size="l" stretched onClick={finishGame} disabled={userAnswers.length !== questions.length} style={{backgroundColor:'#2483E4', opacity:1, color:'#FFF'}}>
                                 Завершить игру
                             </Button>
                         </Div>

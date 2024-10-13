@@ -10,7 +10,7 @@ export const Start = ({id}) => {
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100vh',
-                backgroundColor: '#1673DB',
+                backgroundColor: '#2483E4',
                 justifyContent: 'space-between',
             }}>
                 <Header auth={true} isLight={true}/>
