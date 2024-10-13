@@ -145,13 +145,11 @@ export const BeFriendly = ({ id }) => {
                                     {categorizedTasks.tests.length > 0 && (
                                         <Group>
                                             <Title level="2" weight="bold">Тесты</Title>
-
                                             <HorizontalScroll>
                                                 <Div style={{ display: 'flex', gap: '10px' }}>
                                                     {renderTasks(categorizedTasks.tests, () => routeNavigator.push(`/task?id=${1}`))}
                                                 </Div>
                                                 </HorizontalScroll>
-
                                         </Group>
                                     )}
 
