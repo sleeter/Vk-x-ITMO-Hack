@@ -1,6 +1,8 @@
 import {Card, CardGrid, ContentCard, Group, Panel} from "@vkontakte/vkui";
 import beITMO from '../assets/beITMO.jpg';
 import PropTypes from "prop-types";
+import back from "../assets/back.svg";
+import {Header} from '../components/Header.js';
 
 export const BeItmo = ({id}) => {
     return (
@@ -13,13 +15,16 @@ export const BeItmo = ({id}) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 flexDirection: 'column',
+                backgroundImage: `url(${back})`,
             }}>
+                <Header auth={true} isLight={false}/>
+
                 {/* Главная картинка */}
                 <CardGrid size="m" style={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    marginTop: '20px',
+                    marginTop: '60px',
                     flexGrow: 0,
                 }}>
                     <ContentCard

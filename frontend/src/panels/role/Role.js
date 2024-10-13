@@ -7,7 +7,7 @@ export const Role = ({ id }) => {
     return (
         <Panel id={id}>
             <div className='role-container'>
-                <Header isLight={false}/>
+                <Header isLight={false} auth={false}/>
                 <h2>Пожалуйста, выберите роль</h2>
                 <div className='buttons'>
                     <button>Студент</button>

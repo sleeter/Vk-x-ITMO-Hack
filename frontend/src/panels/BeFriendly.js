@@ -2,10 +2,12 @@ import back from "../assets/back.svg";
 import {Card, CardScroll, Group, Panel} from "@vkontakte/vkui";
 import beFriendly from "../assets/BeFriendly.svg";
 import PropTypes from "prop-types";
+import {Header} from '../components/Header.js';
 
 export const BeFriendly = ({ id }) => {
     return (
         <Panel id={id}>
+            <Header isLight={false} auth={true}/>
             <Group style={{
                 backgroundImage: `url(${back})`,
                 minHeight: '100vh',

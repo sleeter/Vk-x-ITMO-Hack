@@ -15,7 +15,7 @@ export const Start = ({ id }) => {
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',
-                    paddingTop: '12vh',
+                    paddingTop: '20vh',
                 }}>
                     <h1 style={{
                         color: '#FFFFFF',
