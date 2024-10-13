@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS topic
 CREATE TABLE IF NOT EXISTS task
 (
     id bigserial primary key,
-    picture bytea not null,
+    picture varchar(30) not null,
     name varchar(30) not null,
     topic_id bigint references topic(id),
     description varchar(255) not null,
