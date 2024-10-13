@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import vkxitmo.teamalpha.itmokka.dto.request.TakedTaskRequest;
 import vkxitmo.teamalpha.itmokka.dto.response.ApiResponse;
 import vkxitmo.teamalpha.itmokka.dto.response.TaskInfoResponse;
+import vkxitmo.teamalpha.itmokka.dto.response.VkUserResponse;
 import vkxitmo.teamalpha.itmokka.service.TaskService;
 
 @RestController
@@ -18,8 +19,8 @@ public class TaskController {
         return ApiResponse.success(response);
     }
     @PostMapping("/task")
-    ApiResponse<Void> insertTakedTask(@RequestBody TakedTaskRequest takedTaskRequest) {
-        taskService.insertTakedTask(takedTaskRequest);
-        return ApiResponse.success();
+    ApiResponse<VkUserResponse> insertTakedTask(@RequestBody TakedTaskRequest takedTaskRequest) {
+        VkUserResponse response = taskService.insertTakedTask(takedTaskRequest);
+        return ApiResponse.success(response);
     }
 }

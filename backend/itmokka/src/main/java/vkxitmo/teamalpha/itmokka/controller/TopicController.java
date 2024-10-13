@@ -1,12 +1,12 @@
 package vkxitmo.teamalpha.itmokka.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
+import vkxitmo.teamalpha.itmokka.dto.request.TopicOnlyRequest;
 import vkxitmo.teamalpha.itmokka.dto.response.ApiResponse;
 import vkxitmo.teamalpha.itmokka.dto.response.TopicInfoResponse;
+import vkxitmo.teamalpha.itmokka.dto.response.TopicOnlyResponse;
 import vkxitmo.teamalpha.itmokka.dto.response.TopicResponse;
 import vkxitmo.teamalpha.itmokka.service.TopicService;
 
@@ -26,6 +26,12 @@ public class TopicController {
     @GetMapping("/topic/info/{id}")
     ApiResponse<TopicInfoResponse> getInfoAboutTopic(@PathVariable Long id) {
         TopicInfoResponse response = topicService.getTopicInfo(id);
+        return ApiResponse.success(response);
+    }
+
+    @GetMapping("/topic/info")
+    ApiResponse<TopicOnlyResponse> getTopicByName(@Param("name") String name, @Param("id") Long id) {
+        TopicOnlyResponse response = topicService.getTopic(new TopicOnlyRequest(name, id));
         return ApiResponse.success(response);
     }
 }
