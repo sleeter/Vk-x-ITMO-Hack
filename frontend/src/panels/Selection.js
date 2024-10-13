@@ -18,7 +18,8 @@ export const Selection = () => {
                 src={beITMO}
                 alt="Be ITMO"
                 header="Be ITMO"
-                text="Описание ITMO"
+                text="Стиль жизни Университета ИТМО, основанный на принципах благополучия человека
+(well-being) и всестороннего развития членов ITMO Family"
                 maxHeight={200}
                 hasHover={true}
                 style={{
@@ -33,7 +34,7 @@ export const Selection = () => {
                 src="https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
                 alt="Well-being challenge"
                 header="Well-being challenge"
-                text="Описание челленджа"
+                text="Создание благоприятной среды для всестороннего развития членов ITMO.Family направлено на достижение баланса эмоционального, интеллектуального, физического и творческого состояний"
                 maxHeight={200}
                 hasHover={true}
                 style={{
@@ -48,7 +49,7 @@ export const Selection = () => {
                 src="https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
                 alt="Work-life balance"
                 header="Work-life balance"
-                text="Описание баланса работы и жизни"
+                text="Работай чтобы жить, а не живи, чтобы работать. Развиваемся в разных направлениях вместе с университетом"
                 maxHeight={200}
                 hasHover={true}
                 style={{

@@ -14,7 +14,11 @@ public class VkUserService {
     private final VkUserMapper vkUserMapper;
 
     public VkUserResponse getVkUser(Long id) {
-        VkUser vkUser = vkUserRepository.findById(id).orElseThrow();
+        VkUser vkUser = vkUserRepository.findById(id).orElse(null);
+        if(vkUser == null) {
+            vkUser = new VkUser(id,0);
+            vkUserRepository.save(vkUser);
+        }
         return vkUserMapper.vkUserToVkUserResponse(vkUser);
     }
 }

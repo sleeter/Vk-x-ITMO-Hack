@@ -1,7 +1,6 @@
 package vkxitmo.teamalpha.itmokka.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vkxitmo.teamalpha.itmokka.dto.request.TakedTaskRequest;
 import vkxitmo.teamalpha.itmokka.dto.response.TaskInfoResponse;

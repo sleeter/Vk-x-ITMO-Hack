@@ -3,7 +3,6 @@ package vkxitmo.teamalpha.itmokka.mapper;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 import vkxitmo.teamalpha.itmokka.configuration.mapper.MapstructConfig;
-import vkxitmo.teamalpha.itmokka.dto.request.TakedTaskRequest;
 import vkxitmo.teamalpha.itmokka.dto.response.TaskInfoResponse;
 import vkxitmo.teamalpha.itmokka.dto.response.TaskResponse;
 import vkxitmo.teamalpha.itmokka.model.TakedTask;

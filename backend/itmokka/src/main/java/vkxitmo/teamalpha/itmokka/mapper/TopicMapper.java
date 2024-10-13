@@ -1,7 +1,6 @@
 package vkxitmo.teamalpha.itmokka.mapper;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.springframework.stereotype.Component;
 import vkxitmo.teamalpha.itmokka.configuration.mapper.MapstructConfig;
 import vkxitmo.teamalpha.itmokka.dto.response.TaskResponse;
