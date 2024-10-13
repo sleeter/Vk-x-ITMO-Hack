@@ -24,7 +24,7 @@ export const Header = ({ isArrow, auth, isLight }) => {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-between',
-            padding: '10px 3vw',
+            padding: '20px 3vw',
             alignItems: 'center',
             backgroundColor: backColor,
             fontFamily: 'font-family: "Inter", sans-serif',
@@ -70,20 +70,15 @@ export const Header = ({ isArrow, auth, isLight }) => {
                     display: 'flex',
                     flexDirection: 'row',
                     alignItems: 'center',
-                    gap: '8px'
+                    gap: '8px',
+                    padding: 0
                 }}>
-                    <p
-                        style={{
-                            fontWeight: '500',
-                        }}
-                    >
-                        {money}
-                    </p>
+                    <strong>{money}</strong>
                     <img
                         src={itmokk}
                         alt='icon of money'
                         style={{
-                            width: '28px',
+                            width: '50px',
                         }}
                     />
                 </div>}

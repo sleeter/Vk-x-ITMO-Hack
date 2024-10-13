@@ -42,7 +42,7 @@ export const Selection = ({ id }) => {
                 />
                 <ContentCard
                     onClick={() => {
-                        // Переход на страницу "Well-being challenge"
+                        routeNavigator.push('/not-ready')
                     }}
                     src="https://i.pinimg.com/564x/ef/78/9d/ef789dddba116328ff84de7fc596c0eb.jpg"
                     alt="Well-being challenge"
@@ -59,7 +59,7 @@ export const Selection = ({ id }) => {
                 />
                 <ContentCard
                     onClick={() => {
-                        // Переход на страницу "Work-life balance"
+                        routeNavigator.push('/not-ready')
                     }}
                     src="https://i.pinimg.com/564x/ea/f2/93/eaf293e294e72c0387d06514dcaeb18c.jpg"
                     alt="Work-life balance"
