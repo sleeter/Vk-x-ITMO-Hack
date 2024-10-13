@@ -1,7 +1,8 @@
 import { Card, CardGrid, ContentCard, Group, Panel } from "@vkontakte/vkui";
 import beITMO from '../assets/beITMO.jpg';
 import PropTypes from "prop-types";
-import { Header } from "../components/Header.js";
+import back from "../assets/back.svg";
+import {Header} from '../components/Header.js';
 
 export const BeItmo = ({ id }) => {
     return (
@@ -15,14 +16,18 @@ export const BeItmo = ({ id }) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 flexDirection: 'column',
+                backgroundImage: `url(${back})`,
+                height: '100%',
                 paddingTop: '40px',
             }}>
+                <Header auth={true} isLight={false}/>
+
                 {/* Главная картинка */}
                 <CardGrid size="m" style={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    marginTop: '20px',
+                    marginTop: '50px',
                     flexGrow: 0,
                     width: '100%',
                 }}>
@@ -34,7 +39,7 @@ export const BeItmo = ({ id }) => {
                         (well-being) and comprehensive development of ITMO Family members."
                         maxHeight={350}
                         style={{
-                            width: '100%', // Для десктопов и планшетов
+                            width: '90%', // Для десктопов и планшетов
                             margin: '0 auto',
                         }}
                     />

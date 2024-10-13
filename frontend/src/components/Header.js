@@ -11,7 +11,8 @@ export const Header = ({ auth, isLight }) => {
 
     };
 
-    const color = isLight ? '#fff' : '#1673DB';
+    const fontColor = isLight ? '#fff' : '#1673DB';
+    const backColor = isLight ? '#1673DB' : '#fff';
     const logo = isLight ? LightLogo : DarkLogo;
 
     return (
@@ -21,7 +22,7 @@ export const Header = ({ auth, isLight }) => {
             justifyContent: 'space-between',
             padding: '20px 3vw',
             alignItems: 'center',
-            backgroundColor: '#ffffff00',
+            backgroundColor: backColor,
             fontFamily: 'font-family: "Inter", sans-serif',
             position: 'fixed',
             top: 0,
@@ -30,7 +31,7 @@ export const Header = ({ auth, isLight }) => {
             zIndex: 1000,
         }}>
             <div onClick={onBackClick}>
-                <Icon28ArrowLeftOutline style={{color: color}}/>
+                <Icon28ArrowLeftOutline style={{color: fontColor}} />
             </div>
             <div style={{
                 display: 'flex',
@@ -40,7 +41,7 @@ export const Header = ({ auth, isLight }) => {
                 position: 'absolute',
                 left: '50%',
                 transform: 'translateX(-50%)',
-                color: color,
+                color: fontColor,
                 fontSize: '20px',
             }}>
                 <span>ITMOKKA</span>
@@ -54,7 +55,7 @@ export const Header = ({ auth, isLight }) => {
                     }}
                 />
             </div>
-            {isAuth && <div style={{color: color}}>{money} ₽</div>}
+            {isAuth && <div style={{color: fontColor}}>{money} ₽</div>}
         </div>
     );
 }

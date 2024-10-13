@@ -12,6 +12,7 @@ import {
 import { Icon28CheckCircleOutline, Icon28CancelCircleOutline } from '@vkontakte/icons';
 import '@vkontakte/vkui/dist/vkui.css';
 import back from "../assets/back.svg"
+import {Header} from '../components/Header.js';
 
 const questions = [
     { id: 1, text: "Поблагодарить своих коллег", category: "friendly" },
@@ -54,12 +55,17 @@ const QuizGame = () => {
     return (
         <View activePanel={activePanel}>
             <Panel id="game">
-                <PanelHeader>Викторина</PanelHeader>
                 <div style={{
-                    height: 'calc(100vh - var(--vkui_internal--panel_header_height) - 18px)',
+                    height: '100vh',
                     backgroundImage: `url(${back})`,
                     backgroundSize: 'cover',
                 }}>
+                    <Header auth={true} isLight={false}/>
+                    <h2 style={{
+                        fontWeight: '500',
+                        textAlign: 'center',
+                        marginTop: '100px',
+                    }}>Викторина</h2>
                     <Group style={{  }}>
                         <Div style={{
                             display: 'flex',
@@ -100,9 +106,9 @@ const QuizGame = () => {
                                 onDragOver={(e) => e.preventDefault()}
                                 onDrop={() => handleDrop('friendly')}
                                 style={{
-                                    marginTop: '70px',
                                     width: 150,
                                     height: 150,
+                                    marginTop: '3vh',
                                     // border: '2px dashed #4BB34B',
                                     display: 'flex',
                                     flexDirection: 'column',
@@ -118,7 +124,7 @@ const QuizGame = () => {
                                 onDragOver={(e) => e.preventDefault()}
                                 onDrop={() => handleDrop('unfriendly')}
                                 style={{
-                                    marginTop: '70px',
+                                    marginTop: '3vh',
                                     width: 150,
                                     height: 150,
                                     // border: '2px dashed #E64646',
