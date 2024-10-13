@@ -1,7 +1,7 @@
 import {Button, Card, CardGrid, ContentCard, Group, Panel, Title} from "@vkontakte/vkui";
 import {Header} from '../components/Header.js';
 import Calendar from '../assets/Calendar.svg';
-import Coin from '../assets/Coin.svg';
+import Itmokk from '../assets/itmokk.svg';
 import List from '../assets/List.svg';
 import {useSearchParams} from '@vkontakte/vk-mini-apps-router';
 
@@ -50,7 +50,7 @@ export const Task = () => {
                 }}>
                     <Card style={{textAlign: 'center', padding: '10px', flex: '1'}}>
                         <div style={{paddingBottom: '10%'}}>
-                            <img src={Coin} alt="Coin Icon" style={{width: 40, height: 40}}/>
+                            <img src={Itmokk} alt="Coin Icon" style={{width: 40, height: 40}}/>
                         </div>
                         <div>+5</div>
                     </Card>
@@ -72,7 +72,6 @@ export const Task = () => {
                 <Button size="l" style={{maxWidth: '400px', width: '100%', marginTop: '20px'}}>Начать</Button>
             </Group>
 
-            {/* Адаптация под мобильные */}
             <style>
                 {`
                 @media (max-width: 768px) {
