@@ -1,13 +1,15 @@
-import {Button, Card, CardGrid, ContentCard, Group, Panel, Title} from "@vkontakte/vkui";
+import {Button, Card, CardGrid, ContentCard, Group, Panel} from "@vkontakte/vkui";
 import {Header} from '../components/Header.js';
 import Calendar from '../assets/Calendar.svg';
 import Itmokk from '../assets/itmokk.svg';
 import List from '../assets/List.svg';
-import {useSearchParams} from '@vkontakte/vk-mini-apps-router';
+import {useRouteNavigator, useSearchParams} from '@vkontakte/vk-mini-apps-router';
+import {useState} from 'react';
 
 export const Task = () => {
+    const routeNavigator = useRouteNavigator();
     const [params]  = useSearchParams();
-    const id = params.get("id");
+    const [taskId] = useState(params.get("id"));
 
     const tasks = [
         {id: 1, picture: 'https://cdn.culture.ru/images/ed6e78b6-c524-5e73-9f82-7ae0ec88160c', name: 'Я на friendly vibes', description: 'Пройди квиз и докажи, что ты шаришь за be friendly be ITMO!', money: 20, category: 'Тест', dead: '01.09.2026'},
@@ -31,10 +33,10 @@ export const Task = () => {
                 {/* Контентная карточка */}
                 <CardGrid size="l" style={{width: '100%', maxWidth: '400px'}}>
                     <ContentCard
-                        src={tasks[id].picture}
-                        alt={tasks[id].name}
-                        header={tasks[id].name}
-                        text={tasks[id].picture}
+                        src={tasks[taskId].picture}
+                        alt={tasks[taskId].name}
+                        header={tasks[taskId].name}
+                        text={tasks[taskId].description}
                         maxHeight={500}
                         style={{width: '100%', marginTop: '70px',}}
                     />
@@ -48,28 +50,43 @@ export const Task = () => {
                     width: '100%',
                     maxWidth: '400px'
                 }}>
-                    <Card style={{textAlign: 'center', padding: '10px', flex: '1'}}>
+                    <Card style={{textAlign: 'center', padding: '10px', flex: '1', width: '20px', height: '100px'}}>
                         <div style={{paddingBottom: '10%'}}>
                             <img src={Itmokk} alt="Coin Icon" style={{width: 40, height: 40}}/>
                         </div>
-                        <div>+5</div>
+                        <div><strong>+{tasks[taskId].money}</strong></div>
                     </Card>
-                    <Card style={{textAlign: 'center', padding: '10px', flex: '1'}}>
+                    <Card style={{textAlign: 'center',  padding: '10px', flex: '1', width: '20px', height: '100px'}}>
                         <div style={{paddingBottom: '10%'}}>
                             <img src={List} alt="List Icon" style={{width: 40, height: 40}}/>
                         </div>
-                        <div>Категория:</div>
+                        <div>Категория: <strong>{tasks[taskId].category}</strong></div>
                     </Card>
-                    <Card style={{textAlign: 'center', padding: '10px', flex: '1'}}>
+                    <Card style={{textAlign: 'center', padding: '10px', flex: '1', width: '20px', height: '100px'}}>
                         <div style={{paddingBottom: '10%'}}>
                             <img src={Calendar} alt="Calendar Icon" style={{width: 40, height: 40}}/>
                         </div>
-                        <div>Дедлайн:</div>
+                        <div>Дедлайн: <strong>{tasks[taskId].dead}</strong></div>
                     </Card>
                 </CardGrid>
 
                 {/* Кнопка по центру */}
-                <Button size="l" style={{maxWidth: '400px', width: '100%', marginTop: '20px'}}>Начать</Button>
+                <Button
+                    size="l"
+                    style={{
+                        maxWidth: '400px', width: '100%', marginTop: '20px',
+                    }}
+                    onClick={() => {
+                        console.log(taskId)
+                        if (taskId === "0") {
+                            return routeNavigator.push('/game');
+                        } else {
+                            return routeNavigator.push('/not-ready');
+                        }
+                    }}
+                >
+                    Начать
+                </Button>
             </Group>
 
             <style>
