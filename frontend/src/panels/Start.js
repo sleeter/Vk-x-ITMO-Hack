@@ -11,7 +11,7 @@ export const Start = ({id}) => {
                 flexDirection: 'column',
                 height: '100vh',
                 backgroundColor: '#1673DB',
-                justifyContent: 'space-between', // Разделяем контент и подвал по вертикали
+                justifyContent: 'space-between',
             }}>
                 <Header auth={true} isLight={true}/>
                 <div style={{

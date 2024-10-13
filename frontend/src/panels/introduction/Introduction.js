@@ -4,6 +4,7 @@ import {Header} from '../../components/Header.js';
 import GreetingOne from '../../assets/GreetingOne.svg';
 import GreetingTwo from '../../assets/GreetingTwo.svg';
 import './Introduction.css';
+import HelloAvatar from '../../assets/HelloAvatar.svg';
 
 export const Introduction = ({ id }) => {
     return (
@@ -15,12 +16,15 @@ export const Introduction = ({ id }) => {
                 backgroundColor: '#1673DB',
                 position: 'relative',
             }}>
-                <Header auth={true} isLight={true} />
+                <Header auth={true} isLight={true}/>
                 <div className='greetings-box'>
                     <img src={GreetingOne} alt='greeting-one'/>
                     <img src={GreetingTwo} alt='greeting-two'/>
                 </div>
-                <button>Next</button>
+                <div className='avatar'>
+                    <img src={HelloAvatar} alt='welcoming avatar'/>
+                </div>
+                <button className='intro-button'>Next</button>
             </div>
         </Panel>
     );

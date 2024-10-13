@@ -1,6 +1,8 @@
 .greetings-box {
     display: flex;
     justify-content: center;
+
+    margin-top: 72px;
 }
 
 .greetings-box img:nth-child(1) {
@@ -11,7 +13,13 @@
     width: 300px;
 }
 
-.greetings-box + button {
+.avatar {
+    width: 100%;
+    text-align: center;
+    margin-top: -50px;
+}
+
+.intro-button {
     position: absolute;
     bottom: 3vh;
     left: 50%;
@@ -34,5 +42,9 @@
 
     .greetings-box img:nth-child(2) {
         width: 190px;
+    }
+
+    .avatar > img {
+        height: 75%;
     }
 }
