@@ -3,10 +3,7 @@ package vkxitmo.teamalpha.itmokka.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import vkxitmo.teamalpha.itmokka.dto.request.TopicOnlyRequest;
-import vkxitmo.teamalpha.itmokka.dto.response.TaskResponse;
-import vkxitmo.teamalpha.itmokka.dto.response.TopicInfoResponse;
-import vkxitmo.teamalpha.itmokka.dto.response.TopicOnlyResponse;
-import vkxitmo.teamalpha.itmokka.dto.response.TopicResponse;
+import vkxitmo.teamalpha.itmokka.dto.response.*;
 import vkxitmo.teamalpha.itmokka.enumeration.Status;
 import vkxitmo.teamalpha.itmokka.enumeration.Topics;
 import vkxitmo.teamalpha.itmokka.mapper.TaskMapper;
@@ -18,6 +15,7 @@ import vkxitmo.teamalpha.itmokka.repository.TakedTaskRepository;
 import vkxitmo.teamalpha.itmokka.repository.TaskRepository;
 import vkxitmo.teamalpha.itmokka.repository.TopicRepository;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -46,7 +44,7 @@ public class TopicService {
             topicResponseList = Arrays.stream(Topics.values()).filter(t -> t.getLevel().equals(2)).map(t -> topicMapper.TopicEnumToTopicResponse(t.ordinal(), t)).toList();
         } else {
             // TODO: for this
-            taskResponseList = taskService.getTasks(topic).stream().limit(MAXSIZEOFTASKS).map(taskMapper::taskToTaskResponse).toList();
+            taskResponseList = taskService.getTasks(topic).stream().limit(MAXSIZEOFTASKS).map(t -> taskMapper.taskToTaskResponse(t, null)).toList();
         }
         return topicMapper.TopicToTopicInfoResponse(topic, topicResponseList, taskResponseList);
     }
@@ -58,7 +56,20 @@ public class TopicService {
         Topic t = opT.orElseThrow();
         List<Task> taskList = taskRepository.findAllByTopic(t);
         List<TakedTask> takedTasks = takedTaskRepository.findAll().stream().filter(ts -> ts.getId().getUserId().equals(req.id())).toList();
-        taskList.removeIf(task -> takedTasks.stream().anyMatch(takedTask -> takedTask.getStatus().equals(Status.COMPLETED.getLabel()) && takedTask.getId().getTaskId().equals(task.getId())));
-        return topicMapper.TopicToTopicOnlyResponse(t, taskList.stream().map(taskMapper::taskToTaskResponse).toList());
+//        taskList.removeIf(task -> takedTasks.stream().anyMatch(takedTask -> takedTask.getStatus().equals(Status.COMPLETED.getLabel()) && takedTask.getId().getTaskId().equals(task.getId())));
+        List<TmpTaskResponse> list = new ArrayList<>();
+        for(var task : taskList) {
+            for(var takedTask : takedTasks) {
+                if(task.getId().equals(takedTask.getId().getTaskId())) {
+                    list.add(new TmpTaskResponse(task, takedTask.getStatus()));
+                    break;
+                }
+            }
+            list.add(new TmpTaskResponse(task, null));
+        }
+//        return topicMapper.TopicToTopicOnlyResponse(t, taskList.stream().map(taskMapper::taskToTaskResponse).toList());
+        return topicMapper.TopicToTopicOnlyResponse(t, list.stream().map(ts -> {
+            return taskMapper.taskToTaskResponse(ts.task(), ts.status());
+        }).toList());
     }
 }
