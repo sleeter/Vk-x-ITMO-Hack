@@ -146,7 +146,7 @@ export const BeFriendly = ({ id }) => {
                                     {categorizedTasks.tests.length > 0 && (
                                         <Group>
                                             <Title level="2" weight="bold">Тесты</Title>
-                                            {renderTasks(categorizedTasks.tests, () => routeNavigator.push('/task'))}
+                                            {renderTasks(categorizedTasks.tests, () => routeNavigator.push(`/task?id=${1}`))}
                                         </Group>
                                     )}
 
@@ -157,7 +157,7 @@ export const BeFriendly = ({ id }) => {
                                                 <Title level="2" weight="bold">Мероприятия</Title>
                                                 <HorizontalScroll>
                                                     <div style={{ display: 'flex', gap: '10px' }}>
-                                                        {renderTasks(categorizedTasks.events, () => routeNavigator.push('/task'))}
+                                                        {renderTasks(categorizedTasks.events, () => routeNavigator.push(`/task?id=${2}`))}
                                                     </div>
                                                 </HorizontalScroll>
                                             </Group>

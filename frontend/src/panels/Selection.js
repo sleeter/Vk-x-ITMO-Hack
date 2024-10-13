@@ -22,6 +22,7 @@ export const Selection = ({ id }) => {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
+                minWidth: '80%',
             }}>
                 <ContentCard
                     onClick={() => {

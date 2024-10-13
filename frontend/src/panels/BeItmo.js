@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import back from "../assets/back.svg";
 import {Header} from '../components/Header.js';
 import {Footer} from "../components/Footer.js";
-import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
+import {useRouteNavigator, useParams, useSearchParams} from '@vkontakte/vk-mini-apps-router';
 
 
 export const BeItmo = ({ id }) => {
