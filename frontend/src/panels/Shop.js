@@ -2,6 +2,8 @@ import {Group, Div, Title, HorizontalScroll, ContentCard, Text} from '@vkontakte
 import '@vkontakte/vkui/dist/vkui.css';
 import itmokk from "../assets/itmokk.svg"
 import back from "../assets/back.svg";
+import {Header} from '../components/Header.js';
+import {Footer} from '../components/Footer.js';
 
 // Пример данных для каждой категории
 const merchProducts = [
@@ -25,6 +27,7 @@ const services = [
 const Shop = () => {
     return (
         <Group>
+            <Header auth={true} isLight={false}/>
             <div style={{
                 height: '100%',
                 backgroundImage: `url(${back})`,
@@ -116,6 +119,7 @@ const Shop = () => {
                     </HorizontalScroll>
                 </Div>
             </div>
+            <Footer />
         </Group>
 );
 };

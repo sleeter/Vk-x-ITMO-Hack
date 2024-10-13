@@ -1,0 +1,10 @@
+.uncomplete-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    margin-top: 70px;
+    background-color: #2483E4;
+}

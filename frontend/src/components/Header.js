@@ -2,7 +2,7 @@ import {Icon28ArrowLeftOutline} from '@vkontakte/icons';
 import PropTypes from 'prop-types';
 import DarkLogo from '../assets/DarkLogo.svg';
 import LightLogo from '../assets/LightLogo.svg';
-import Itmokk from '../assets/Itmokk.svg';
+import itmokk from '../assets/itmokk.svg';
 import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
 
 export const Header = ({ isArrow, auth, isLight }) => {
@@ -70,7 +70,7 @@ export const Header = ({ isArrow, auth, isLight }) => {
                 }}>
                     {money}
                     <img
-                        src={Itmokk}
+                        src={itmokk}
                         alt='icon of money'
                         style={{
                             width: '30px',
