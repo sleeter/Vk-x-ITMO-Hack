@@ -1,10 +1,9 @@
-import { Panel } from '@vkontakte/vkui';
+import {Panel} from '@vkontakte/vkui';
 import PropTypes from 'prop-types';
 
-import { Header } from '../components/Header.js';
-import { Footer } from '../components/Footer.js';
+import {Header} from '../components/Header.js';
 
-export const Start = ({ id }) => {
+export const Start = ({id}) => {
     return (
         <Panel id={id}>
             <div style={{
@@ -14,7 +13,7 @@ export const Start = ({ id }) => {
                 backgroundColor: '#1673DB',
                 justifyContent: 'space-between', // Разделяем контент и подвал по вертикали
             }}>
-                <Header auth={true} isLight={true} />
+                <Header auth={true} isLight={true}/>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -30,7 +29,6 @@ export const Start = ({ id }) => {
                         ITMOKKA
                     </h1>
                 </div>
-                <Footer />
             </div>
         </Panel>
     );
