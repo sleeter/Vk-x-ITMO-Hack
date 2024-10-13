@@ -3,10 +3,15 @@ import {Header} from '../components/Header.js';
 import Calendar from '../assets/Calendar.svg';
 import Itmokk from '../assets/itmokk.svg';
 import List from '../assets/List.svg';
+import {useSearchParams} from '@vkontakte/vk-mini-apps-router';
 
-export const Task = ({ id }) => {
+export const Task = () => {
+    const [params]  = useSearchParams();
+    const id = params.get("id");
+
     const tasks = [
-        {id: 1, picture: 'https://cdn.culture.ru/images/ed6e78b6-c524-5e73-9f82-7ae0ec88160c', name: 'Я на friendly vibes', description: 'Пройди квиз и докажи, что ты шаришь за be friendly be ITMO!'}
+        {id: 1, picture: 'https://cdn.culture.ru/images/ed6e78b6-c524-5e73-9f82-7ae0ec88160c', name: 'Я на friendly vibes', description: 'Пройди квиз и докажи, что ты шаришь за be friendly be ITMO!', money: 20, category: 'Тест', dead: '01.09.2026'},
+        {id: 2, picture: 'https://sun9-10.userapi.com/impg/5adpdJOfhzjsu95rQotCP9M2L3dluoF9EUUvFw/j3qZ2iyu5Xg.jpg?size=1060x1060&quality=95&sign=a023e58ccd25e991deddbc6189fed249&type=album', name: 'Пробное занятие в MBSchool', description: 'Сходи на пробное занятие в MBSchool по одному из доступных направлений и открой для себя новые возможности ITMO.FAMILY', money: 200, category: 'Мероприятие', dead: '01.09.2026'},
     ];
 
     return (
@@ -26,10 +31,10 @@ export const Task = ({ id }) => {
                 {/* Контентная карточка */}
                 <CardGrid size="l" style={{width: '100%', maxWidth: '400px'}}>
                     <ContentCard
-                        src="https://sun9-10.userapi.com/impg/5adpdJOfhzjsu95rQotCP9M2L3dluoF9EUUvFw/j3qZ2iyu5Xg.jpg?size=1060x1060&quality=95&sign=a023e58ccd25e991deddbc6189fed249&type=album"
-                        alt="Picture of person's left hand with pink paint"
-                        header="Name (подтягивать с бэка)"
-                        text="Описание (Подтягивать с бэка)"
+                        src={tasks[id].picture}
+                        alt={tasks[id].name}
+                        header={tasks[id].name}
+                        text={tasks[id].picture}
                         maxHeight={500}
                         style={{width: '100%', marginTop: '70px',}}
                     />
