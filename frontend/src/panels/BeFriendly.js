@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Group, Panel, Title, ContentCard, Div, Spinner, Snackbar, Avatar, HorizontalScroll } from "@vkontakte/vkui";
+import {Group, Panel, Title, ContentCard, Div, Spinner, Snackbar, Avatar, HorizontalScroll} from "@vkontakte/vkui";
 import { Icon16Done } from '@vkontakte/icons';
 import vkBridge from '@vkontakte/vk-bridge';
 import PropTypes from 'prop-types';
-import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
 import { Header } from '../components/Header.js';
 import { Footer } from '../components/Footer.js';
+
 
 // URL API и пример ID пользователя
 const API_URL = 'http://84.201.137.6:8080/api/v1/topic/info';
@@ -21,9 +22,9 @@ export const BeFriendly = ({ id }) => {
     const fetchCategoryData = async (categoryName) => {
         setLoading(true);
         try {
-            const response = await fetch(`${API_URL}?name=${categoryName}&id=${PAGE_ID}`);
+            const response = await fetch(`${API_URL}?name=${categoryName}&id=${PAGE_ID}`)
             const result = await response.json();
-            console.log(result);
+            console.log(result)
             if (result.errors.length === 0) {
                 setCategoryData(result.data);
             } else {
@@ -85,15 +86,15 @@ export const BeFriendly = ({ id }) => {
 
     // Рендеринг списка задач на основе данных из API
     const renderTasks = (taskList, handleCardClick) => (
-        <>
+        <Div style={{ display: 'flex', flexDirection: 'column' }}>
             {taskList.map((task) => {
                 let picturePath;
                 if (task.picture === 'place') {
-                    picturePath = "https://optim.tildacdn.com/stor3263-6138-4962-a634-353634373636/-/resize/600x600/-/format/webp/37813807.png";
+                    picturePath = `https://optim.tildacdn.com/stor3263-6138-4962-a634-353634373636/-/resize/600x600/-/format/webp/37813807.png`;
                 } else if (task.picture === 'event') {
-                    picturePath = "https://optim.tildacdn.com/tild3431-3063-4533-b136-333865666339/-/resize/600x600/-/format/webp/_pdfio_1.png";
+                    picturePath =  `https://optim.tildacdn.com/tild3431-3063-4533-b136-333865666339/-/resize/600x600/-/format/webp/_pdfio_1.png`;
                 } else {
-                    picturePath = "https://optim.tildacdn.com/tild3262-3535-4565-a339-313233316335/-/resize/600x600/-/format/webp/_1.png";
+                    picturePath = `https://optim.tildacdn.com/tild3262-3535-4565-a339-313233316335/-/resize/600x600/-/format/webp/_1.png`;
                 }
                 return (
                     <ContentCard
@@ -106,12 +107,11 @@ export const BeFriendly = ({ id }) => {
                         style={{
                             cursor: 'pointer',
                             marginBottom: '16px',
-                            width: '18rem'  // Ограничиваем ширину карточки
+                            width: '20rem'
                         }}
                     />
-                );
-            })}
-        </>
+            )})}
+        </Div>
     );
 
     return (
@@ -145,35 +145,29 @@ export const BeFriendly = ({ id }) => {
                                     {categorizedTasks.tests.length > 0 && (
                                         <Group>
                                             <Title level="2" weight="bold">Тесты</Title>
-                                            <HorizontalScroll>
-                                                <Div style={{ display: 'flex', gap: '10px' }}>
-                                                    {renderTasks(categorizedTasks.tests, () => routeNavigator.push('/task'))}
-                                                </Div>
-                                            </HorizontalScroll>
+                                            {renderTasks(categorizedTasks.tests, () => routeNavigator.push(`/task?id=${1}`))}
                                         </Group>
                                     )}
 
                                     {/* Категория Мероприятия */}
                                     {categorizedTasks.events.length > 0 && (
-                                        <Group>
-                                            <Title level="2" weight="bold">Мероприятия</Title>
-                                            <HorizontalScroll>
-                                                <Div style={{ display: 'flex', gap: '10px' }}>
-                                                    {renderTasks(categorizedTasks.events, () => routeNavigator.push('/task'))}
-                                                </Div>
-                                            </HorizontalScroll>
-                                        </Group>
+
+                                            <Group>
+                                                <Title level="2" weight="bold">Мероприятия</Title>
+                                                <HorizontalScroll>
+                                                    <div style={{ display: 'flex', gap: '10px' }}>
+                                                        {renderTasks(categorizedTasks.events, () => routeNavigator.push(`/task?id=${2}`))}
+                                                    </div>
+                                                </HorizontalScroll>
+                                            </Group>
+
                                     )}
 
                                     {/* Категория Места */}
                                     {categorizedTasks.places.length > 0 && (
                                         <Group>
                                             <Title level="2" weight="bold">Места</Title>
-                                            <HorizontalScroll>
-                                                <Div style={{ display: 'flex', gap: '10px' }}>
-                                                    {renderTasks(categorizedTasks.places, handleCardClickForPlaces)}
-                                                </Div>
-                                            </HorizontalScroll>
+                                            {renderTasks(categorizedTasks.places, handleCardClickForPlaces)}
                                         </Group>
                                     )}
                                 </>
