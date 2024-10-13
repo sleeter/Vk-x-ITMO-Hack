@@ -14,6 +14,11 @@ import '@vkontakte/vkui/dist/vkui.css';
 import back from "../assets/back.svg"
 import {Header} from '../components/Header.js';
 import {Footer} from "../components/Footer.js";
+import mokka1 from '../assets/mokka1.png';
+import mokka2 from '../assets/mokka2.png'
+import mokka3 from '../assets/mokka3.png'
+import mokka4 from '../assets/mokka4.png'
+
 
 const questions = [
     { id: 1, text: "Поблагодарить своих коллег", category: "friendly" },
@@ -156,16 +161,112 @@ const QuizGame = () => {
                         <Placeholder>
                             Вы правильно распределили {score} из {questions.length} вопросов.
                             {score === questions.length && (
-                                <p>Ты настоящий член ITMO.FAMILY!</p>
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    textAlign: 'center',
+                                    padding: '20px'
+                                }}>
+                                    <p style={{
+                                        fontSize: '18px',
+                                        fontWeight: 'bold',
+                                        marginBottom: '20px',
+                                    }}>
+                                        Ты настоящий член ITMO.FAMILY!
+                                    </p>
+                                    <img
+                                        src={mokka4}
+                                        alt="ITMO Family"
+                                        style={{
+                                            maxHeight: 200,
+                                            borderRadius: '10px',  // Немного скруглим углы для изображения
+                                            objectFit: 'cover'     // Чтобы изображение красиво вписывалось в область
+                                        }}
+                                    />
+                                </div>
                             )}
                             {score > questions.length / 2 && score < questions.length && (
-                                <p>Похоже, ты уже хорошо знаком с нашими ценностями</p>
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    textAlign: 'center',
+                                    padding: '20px'
+                                }}>
+                                    <p style={{
+                                        fontSize: '18px',
+                                        fontWeight: 'bold',
+                                        marginBottom: '20px',
+                                    }}>
+                                        Похоже, ты уже хорошо знаком с нашими ценностями
+                                    </p>
+                                    <img
+                                        src={mokka3}
+                                        alt="ITMO Family"
+                                        style={{
+                                            maxHeight: 200,
+                                            borderRadius: '10px',  // Немного скруглим углы для изображения
+                                            objectFit: 'cover'     // Чтобы изображение красиво вписывалось в область
+                                        }}
+                                    />
+                                </div>
                             )}
                             {score <= questions.length / 2 && score > 0 && (
-                                <p>Неплохо, но есть куда стремиться. Может, сходить на ITMO FAMILY DAY?</p>
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    textAlign: 'center',
+                                    padding: '20px'
+                                }}>
+                                    <p style={{
+                                        fontSize: '18px',
+                                        fontWeight: 'bold',
+                                        marginBottom: '20px',
+                                    }}>
+                                        Неплохо, но есть куда стремиться. Может, сходить на ITMO FAMILY DAY?
+                                    </p>
+                                    <img
+                                        src={mokka2}
+                                        alt="ITMO Family"
+                                        style={{
+                                            maxHeight: 200,
+                                            borderRadius: '10px',  // Немного скруглим углы для изображения
+                                            objectFit: 'cover'     // Чтобы изображение красиво вписывалось в область
+                                        }}
+                                    />
+                                </div>
                             )}
                             {score === 0 && (
-                                <p>Срочно подключайся на наши friendly vibes</p>
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    textAlign: 'center',
+                                    padding: '20px'
+                                }}>
+                                    <p style={{
+                                        fontSize: '18px',
+                                        fontWeight: 'bold',
+                                        marginBottom: '20px',
+                                    }}>
+                                        Срочно подключайся на наши friendly vibes
+                                    </p>
+                                    <img
+                                        src={mokka1}
+                                        alt="ITMO Family"
+                                        style={{
+                                            maxHeight: 200,
+                                            borderRadius: '10px',  // Немного скруглим углы для изображения
+                                            objectFit: 'cover'     // Чтобы изображение красиво вписывалось в область
+                                        }}
+                                    />
+                                </div>
                             )}
                         </Placeholder>
                         <Button size="l" stretched onClick={() => window.location.reload()}>
@@ -174,7 +275,7 @@ const QuizGame = () => {
                     </Div>
                 </Group>
             </Panel>
-            <Footer style={{ marginTop: 'auto' }} />
+            <Footer style={{marginTop: 'auto'}}/>
 
         </View>
     );
