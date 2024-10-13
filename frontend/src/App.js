@@ -1,7 +1,7 @@
 import { View, SplitLayout, SplitCol } from '@vkontakte/vkui';
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
 
-import { DEFAULT_VIEW_PANELS } from './routes';
+import {DEFAULT_VIEW, DEFAULT_VIEW_PANELS} from './routes';
 import {BeFriendly, BeItmo, Selection, Task} from './panels/index.js';
 import {Start} from './panels/Start.js';
 import {Introduction} from './panels/introduction/Introduction.js';
@@ -15,7 +15,7 @@ export const App = () => {
   return (
     <SplitLayout>
       <SplitCol>
-        <View activePanel={activePanel}>
+        <View activePanel={activePanel} id={DEFAULT_VIEW}>
           <QuizGame id="game" />
           <BeItmo id="be-itmo"/>
           <BeFriendly id="be-friendly"/>
