@@ -103,7 +103,6 @@ const QuizGame = () => {
                                             padding: '8px',
                                             border: '3px solid #1366c2',
                                             cursor: 'pointer'
-
                                         }}
                                     >
                                         {question.text}
