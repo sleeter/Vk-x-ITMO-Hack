@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import DarkLogo from '../assets/DarkLogo.svg';
 import LightLogo from '../assets/LightLogo.svg';
 import Itmokk from '../assets/Itmokk.svg';
+import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
 
-export const Header = ({ auth, isLight }) => {
+export const Header = ({ isArrow, auth, isLight }) => {
+    const routeNavigator = useRouteNavigator();
+
     const isAuth = auth;
     const money = 100;
 
     const onBackClick = () => {
-
+        routeNavigator.back();
     };
 
     const fontColor = isLight ? '#fff' : '#2483E4';
@@ -32,7 +35,13 @@ export const Header = ({ auth, isLight }) => {
             zIndex: 1000,
         }}>
             <div onClick={onBackClick}>
-                <Icon28ArrowLeftOutline style={{color: fontColor}} />
+                {isArrow &&
+                    <Icon28ArrowLeftOutline
+                        style={{
+                            color: fontColor,
+                            cursor: 'pointer',
+                        }}
+                    />}
             </div>
             <div style={{
                 display: 'flex',
@@ -73,6 +82,11 @@ export const Header = ({ auth, isLight }) => {
 }
 
 Header.propTypes = {
+    isArrow: PropTypes.bool,
     auth: PropTypes.bool.isRequired,
     isLight: PropTypes.bool.isRequired,
+};
+
+Header.defaultProps = {
+    isArrow: true,
 };

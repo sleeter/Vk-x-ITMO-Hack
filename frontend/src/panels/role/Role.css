@@ -36,6 +36,7 @@
     font-weight: 500;
     font-size: 22px;
     letter-spacing: 0.75px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 500px) {

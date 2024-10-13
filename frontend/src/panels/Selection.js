@@ -3,8 +3,11 @@ import beITMO from '../assets/beITMO.jpg';
 import back from '../assets/back.svg';
 import PropTypes from 'prop-types';
 import {Header} from '../components/Header.js';
+import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
 
 export const Selection = ({ id }) => {
+    const routeNavigator = useRouteNavigator();
+
     return (
         <Panel id={id} >
             <Header auth={true} isLight={false}/>
@@ -16,7 +19,7 @@ export const Selection = ({ id }) => {
             }}>
                 <ContentCard
                     onClick={() => {
-                        // Переход на страницу "Be ITMO"
+                        routeNavigator.push('/be-itmo')
                     }}
                     src={beITMO}
                     alt="Be ITMO"
