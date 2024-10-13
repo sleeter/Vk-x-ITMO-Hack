@@ -2,6 +2,7 @@ import {Panel} from '@vkontakte/vkui';
 import PropTypes from 'prop-types';
 
 import {Header} from '../components/Header.js';
+import {Footer} from "../components/Footer.js";
 
 export const Start = ({id}) => {
     return (
@@ -32,6 +33,7 @@ export const Start = ({id}) => {
                     </h1>
                 </div>
             </div>
+
         </Panel>
     );
 };

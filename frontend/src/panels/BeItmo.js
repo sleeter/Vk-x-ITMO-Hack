@@ -3,6 +3,7 @@ import beITMO from '../assets/beITMO.jpg';
 import PropTypes from "prop-types";
 import back from "../assets/back.svg";
 import {Header} from '../components/Header.js';
+import {Footer} from "../components/Footer.js";
 
 export const BeItmo = ({ id }) => {
     return (
@@ -75,8 +76,11 @@ export const BeItmo = ({ id }) => {
                             </Card>
                         </a>
                     ))}
+                    <Footer/>
+
                 </CardGrid>
             </Group>
+
 
             <style>{`
                 @media (max-width: 600px) {
@@ -104,7 +108,9 @@ export const BeItmo = ({ id }) => {
                     }
                 }
             `}</style>
+
         </Panel>
+
     );
 };
 
