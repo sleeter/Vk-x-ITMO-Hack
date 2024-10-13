@@ -8,6 +8,7 @@ import {Introduction} from './panels/introduction/Introduction.js';
 import QuizGame from "./panels/QuizGame.js";
 import Shop from "./panels/Shop.js";
 import {Role} from './panels/role/Role.js';
+import {Uncomplete} from './panels/uncomplete/Uncomplete.js';
 
 export const App = () => {
   const { panel: activePanel = DEFAULT_VIEW_PANELS.START } = useActiveVkuiLocation();
@@ -25,6 +26,7 @@ export const App = () => {
           <Start id='start' />
           <Introduction id='intro' />
           <Role id="role"/>
+          <Uncomplete id='not-ready' />
         </View>
       </SplitCol>
     </SplitLayout>

@@ -10,6 +10,8 @@ VALUES (0, 'be ITMO', 'some desc'),
        (8, 'be pro', 'some desc');
 
 INSERT INTO task(id, picture, name, topic_id, description, points, category, deadline, explanation)
-VALUES (0, '', 'Посетить музей оптики', 8, 'some desc', 10, 'some category', '2025-08-30 10:00:00', 'some explanation'),
+VALUES (0, '../assets/place.png', 'Посети музей оптики ИТМО', 3, 'some desc', 10, 'Место', '2025-08-30 10:00:00', 'some explanation'),
        (1, '', '1st', 8, 'some desc', 1, 'some category', '2025-08-30 10:00:00', 'some explanation'),
-       (2, '', '2d', 8, 'some desc', 2, 'some category', '2025-08-30 10:00:00', 'some explanation');
+       (2, '', '2d', 8, 'some desc', 2, 'some category', '2025-08-30 10:00:00', 'some explanation'),
+       (3, '../assets/test.png', 'Квиз "Я на friendly vibes"', 3, 'some desc', 2, 'Тест', '2025-08-30 10:00:00', 'some explanation'),
+       (4, '../assets/event.png', 'Посети ITMO FAMILY DAY', 3, 'some desc', 2, 'Мероприятие', '2025-08-30 10:00:00', 'some explanation');

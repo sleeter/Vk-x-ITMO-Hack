@@ -18,7 +18,7 @@ public class Task {
     private Long id;
 
     @Column(name = "picture", nullable = false)
-    private byte[] picture;
+    private String picture;
 
     @Column(name = "name", nullable = false, length = 30)
     private String name;

@@ -2,6 +2,9 @@ import {Group, Div, Title, HorizontalScroll, ContentCard, Text} from '@vkontakte
 import '@vkontakte/vkui/dist/vkui.css';
 import itmokk from "../assets/itmokk.svg"
 import back from "../assets/back.svg";
+import {Header} from '../components/Header.js';
+import {Footer} from '../components/Footer.js';
+import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
 
 // Пример данных для каждой категории
 const merchProducts = [
@@ -23,15 +26,18 @@ const services = [
 ];
 
 const Shop = () => {
+    const routeNavigator = useRouteNavigator();
+
     return (
         <Group>
+            <Header auth={true} isLight={false}/>
             <div style={{
                 height: '100%',
                 backgroundImage: `url(${back})`,
-                backgroundSize: 'cover',
+                paddingTop: '70px',
+                paddingBottom: '40px',
             }}>
                 <Title weight="bold" style={{
-                    marginTop: '25px',
                     marginBottom: '25px',
                     textAlign: 'center',
                     fontSize: '40px'
@@ -52,11 +58,14 @@ const Shop = () => {
                                     header={
                                         <div style={{display: 'flex', alignItems: 'center'}}>
                                             <Text weight="medium" style={{marginRight: '4px'}}>{service.price}</Text>
-                                            <img src={itmokk} alt="Itmokk" style={{width: '16px', height: '16px'}}/>
+                                            <img src={itmokk} alt="Itmokk" style={{width: '30px'}}/>
                                         </div>
                                     }
                                     text="Используй свои итмокки на полную!"
                                     style={{minWidth: 200, margin: 12}}
+                                    onClick={() => {
+                                        routeNavigator.push('/not-ready')
+                                    }}
                                 />
                             ))}
                         </div>
@@ -78,11 +87,14 @@ const Shop = () => {
                                     header={
                                         <div style={{display: 'flex', alignItems: 'center'}}>
                                             <Text weight="medium" style={{marginRight: '4px'}}>{discount.price}</Text>
-                                            <img src={itmokk} alt="Itmokk" style={{width: '16px', height: '16px'}}/>
+                                            <img src={itmokk} alt="Itmokk" style={{width: '30px'}}/>
                                         </div>
                                     }
                                     text="Не упусти выгоду!"
                                     style={{minWidth: 200, margin: 12}}
+                                    onClick={() => {
+                                        routeNavigator.push('/not-ready')
+                                    }}
                                 />
                             ))}
                         </div>
@@ -102,7 +114,7 @@ const Shop = () => {
                                     header={
                                         <div style={{display: 'flex', alignItems: 'center'}}>
                                             <Text weight="medium" style={{marginRight: '4px'}}>{product.price}</Text>
-                                            <img src={itmokk} alt="Itmokk" style={{width: '16px', height: '16px'}}/>
+                                            <img src={itmokk} alt="Itmokk" style={{width: '30px'}}/>
                                         </div>
                                     }
                                     subtitle={
@@ -110,12 +122,16 @@ const Shop = () => {
                                     }
                                     text="Лучший мерч!"
                                     style={{minWidth: 200, margin: 12}}
+                                    onClick={() => {
+                                        routeNavigator.push('/not-ready')
+                                    }}
                                 />
                             ))}
                         </div>
                     </HorizontalScroll>
                 </Div>
             </div>
+            <Footer />
         </Group>
 );
 };

@@ -3,17 +3,18 @@ import beITMO from '../assets/beITMO.jpg';
 import PropTypes from "prop-types";
 import back from "../assets/back.svg";
 import {Header} from '../components/Header.js';
+import {Footer} from "../components/Footer.js";
 import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
+
 
 export const BeItmo = ({ id }) => {
     const routeNavigator = useRouteNavigator();
 
     const handleClick = (text) => {
-
         if (text === 'be friendly') {
             routeNavigator.push('/be-friendly');
         } else {
-            console.log(text);
+            routeNavigator.push('/not-ready');
         }
     };
 
@@ -90,8 +91,11 @@ export const BeItmo = ({ id }) => {
                             </div>
                         </Card>
                     ))}
+                    <Footer/>
+
                 </CardGrid>
             </Group>
+
 
             <style>{`
                 @media (max-width: 600px) {
@@ -119,7 +123,9 @@ export const BeItmo = ({ id }) => {
                     }
                 }
             `}</style>
+
         </Panel>
+
     );
 };
 
