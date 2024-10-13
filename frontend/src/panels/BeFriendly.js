@@ -173,7 +173,7 @@ export const BeFriendly = ({ id }) => {
                                             <Title level="2" weight="bold">Места</Title>
                                             <HorizontalScroll>
                                                 <Div style={{ display: 'flex', gap: '10px' }}>
-                                            {renderTasks(categorizedTasks.places, handleCardClickForPlaces)}
+                                                {renderTasks(categorizedTasks.places, handleCardClickForPlaces)}
                                                 </Div>
                                             </HorizontalScroll>
                                         </Group>
