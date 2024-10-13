@@ -26,7 +26,6 @@ export const Selection = ({id}) => {
             }}>
                 <CardGrid size="l" style={{
                     marginTop: '100vw',
-                    // marginBottom: '100vw',
                     backgroundPosition: 'center',
                     flexGrow: 1,  // Это позволяет растянуть контейнер до максимальной высоты
                     display: 'flex',

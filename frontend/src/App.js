@@ -17,15 +17,15 @@ export const App = () => {
     <SplitLayout>
       <SplitCol>
         <View activePanel={activePanel} id={DEFAULT_VIEW}>
-          <QuizGame id="game" />
-          <BeItmo id="be-itmo"/>
-          <BeFriendly id="be-friendly"/>
-          <Selection id="selection"/>
-          <Shop id="shop"/>
-          <Task id="task"/>
           <Start id='start' />
           <Introduction id='intro' />
           <Role id="role"/>
+          <Selection id="selection"/>
+          <BeItmo id="be-itmo"/>
+          <BeFriendly id="be-friendly"/>
+          <Task id="task"/>
+          <QuizGame id="game" />
+          <Shop id="shop"/>
           <Uncomplete id='not-ready' />
         </View>
       </SplitCol>
