@@ -1,0 +1,25 @@
+.uncomplete-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    padding-top: 20px;
+    background-color: #2483E4;
+}
+
+@media screen and (max-width: 500px) {
+    .uncomplete-container {
+       padding-top: 50px;
+    }
+
+    .avatar > img {
+        height: 70%;
+        margin-top: -30px;
+    }
+
+    .sad-message > img {
+        height: 80%;
+    }
+}

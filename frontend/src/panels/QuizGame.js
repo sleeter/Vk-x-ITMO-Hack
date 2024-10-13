@@ -13,6 +13,7 @@ import { Icon28CheckCircleOutline, Icon28CancelCircleOutline } from '@vkontakte/
 import '@vkontakte/vkui/dist/vkui.css';
 import back from "../assets/back.svg"
 import {Header} from '../components/Header.js';
+import {Footer} from "../components/Footer.js";
 
 const questions = [
     { id: 1, text: "Поблагодарить своих коллег", category: "friendly" },
@@ -173,6 +174,8 @@ const QuizGame = () => {
                     </Div>
                 </Group>
             </Panel>
+            <Footer style={{ marginTop: 'auto' }} />
+
         </View>
     );
 };

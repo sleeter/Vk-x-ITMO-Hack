@@ -44,6 +44,7 @@ export const Start = ({id}) => {
                     </h1>
                 </div>
             </div>
+
         </Panel>
     );
 };
