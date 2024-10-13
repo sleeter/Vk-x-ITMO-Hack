@@ -4,12 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import vkxitmo.teamalpha.itmokka.dto.request.TakedTaskRequest;
 import vkxitmo.teamalpha.itmokka.dto.response.TaskInfoResponse;
+import vkxitmo.teamalpha.itmokka.dto.response.VkUserResponse;
 import vkxitmo.teamalpha.itmokka.enumeration.Status;
 import vkxitmo.teamalpha.itmokka.mapper.TaskMapper;
-import vkxitmo.teamalpha.itmokka.model.TakedTask;
-import vkxitmo.teamalpha.itmokka.model.TakedTaskId;
-import vkxitmo.teamalpha.itmokka.model.Task;
-import vkxitmo.teamalpha.itmokka.model.Topic;
+import vkxitmo.teamalpha.itmokka.model.*;
 import vkxitmo.teamalpha.itmokka.repository.TakedTaskRepository;
 import vkxitmo.teamalpha.itmokka.repository.TaskRepository;
 
@@ -22,6 +20,7 @@ public class TaskService {
     private final TaskRepository taskRepository;
     private final TaskMapper taskMapper;
     private final TakedTaskRepository takedTaskRepository;
+    private final VkUserService vkUserService;
 
     // TODO: except done tasks and expired
     public List<Task> getTasks(Topic topic) {
@@ -31,7 +30,7 @@ public class TaskService {
         Task task = taskRepository.findById(id).orElseThrow();
         return taskMapper.taskToTaskInfoResponse(task);
     }
-    public void insertTakedTask(TakedTaskRequest takedTaskRequest) {
+    public VkUserResponse insertTakedTask(TakedTaskRequest takedTaskRequest) {
         TakedTaskId id = taskMapper.userAndTaskIdToTakedTaskId(takedTaskRequest.userId(), takedTaskRequest.taskId());
 
         TakedTask task = taskMapper.takedTaskRequestToTakedTask(id, takedTaskRequest.status());
@@ -46,12 +45,15 @@ public class TaskService {
             t.setStatus(task.getStatus());
         }
         if(task.getStatus().equals(Status.COMPLETED.getLabel())) {
-            // TODO: change the points to vk user
+            Task taskGen = taskRepository.findById(task.getId().getTaskId()).orElseThrow();
+            vkUserService.addPointsVkUser(task.getId().getUserId(), taskGen.getPoints());
         }
+        VkUserResponse vkUser = vkUserService.getVkUser(task.getId().getUserId());
         if(t != null) {
             takedTaskRepository.save(t);
         } else {
             takedTaskRepository.save(task);
         }
+        return vkUser;
     }
 }

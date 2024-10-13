@@ -1,6 +1,7 @@
 package vkxitmo.teamalpha.itmokka.dto.response;
 
-import vkxitmo.teamalpha.itmokka.model.Task;
 
-public record TaskInfoResponse(Task task) {
+import java.time.Instant;
+
+public record TaskInfoResponse(Long id, byte[] picture, String name, String description, Integer points, String category, Instant deadline, String explanation) {
 }

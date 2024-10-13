@@ -4,8 +4,21 @@ import PropTypes from "prop-types";
 import back from "../assets/back.svg";
 import {Header} from '../components/Header.js';
 import {Footer} from "../components/Footer.js";
+import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
+
 
 export const BeItmo = ({ id }) => {
+    const routeNavigator = useRouteNavigator();
+
+    const handleClick = (text) => {
+
+        if (text === 'be friendly') {
+            routeNavigator.push('/be-friendly');
+        } else {
+            console.log(text);
+        }
+    };
+
     return (
         <Panel id={id}>
             <Header auth={true} isLight={false} />
@@ -58,10 +71,11 @@ export const BeItmo = ({ id }) => {
                     maxWidth: '500px',
                     width: '100%',
                 }}>
-                    {['be healthy', 'be eco', 'be Friendly', 'be pro', 'be fit', 'be open'].map((text, index) => (
-                        <a href={`/${text.replace(' ', '')}`} key={index} className="card-link"
-                           style={{ textDecoration: 'none' }}>
-                            <Card className="hover-card" style={{
+                    {['be healthy', 'be eco', 'be friendly', 'be pro', 'be fit', 'be open'].map((text, index) => (
+                        <Card
+                            className="hover-card"
+                            key={index}
+                            style={{
                                 backgroundColor: ['#E74C3C', '#27AE60', '#E91E63', '#9B59B6', '#3498DB', '#E67E22'][index],
                                 borderRadius: 10,
                                 width: '150px',
@@ -69,12 +83,14 @@ export const BeItmo = ({ id }) => {
                                 display: 'flex',
                                 justifyContent: 'center',
                                 alignItems: 'center',
-                            }}>
-                                <div style={{ color: 'white', fontSize: 16, textAlign: 'center' }}>
-                                    {text}
-                                </div>
-                            </Card>
-                        </a>
+                                cursor: 'pointer',
+                            }}
+                            onClick={() => handleClick(text)}
+                        >
+                            <div style={{ color: 'white', fontSize: 16, textAlign: 'center' }}>
+                                {text}
+                            </div>
+                        </Card>
                     ))}
                     <Footer/>
 

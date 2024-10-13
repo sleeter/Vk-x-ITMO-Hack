@@ -21,4 +21,15 @@ public class VkUserService {
         }
         return vkUserMapper.vkUserToVkUserResponse(vkUser);
     }
+
+    public VkUserResponse addPointsVkUser(Long id, Integer points) {
+        VkUser vkUser = vkUserRepository.findById(id).orElse(null);
+        if(vkUser == null) {
+            vkUser = new VkUser(id,points);
+        } else {
+            vkUser.setPoints(vkUser.getPoints() + points);
+        }
+        vkUserRepository.save(vkUser);
+        return vkUserMapper.vkUserToVkUserResponse(vkUser);
+    }
 }

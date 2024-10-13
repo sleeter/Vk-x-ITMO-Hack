@@ -6,6 +6,7 @@ import {BeFriendly, BeItmo, Selection, Task} from './panels/index.js';
 import {Start} from './panels/Start.js';
 import {Introduction} from './panels/introduction/Introduction.js';
 import QuizGame from "./panels/QuizGame.js";
+import Shop from "./panels/Shop.js";
 import {Role} from './panels/role/Role.js';
 
 export const App = () => {
@@ -19,6 +20,7 @@ export const App = () => {
           <BeItmo id="be-itmo"/>
           <BeFriendly id="be-friendly"/>
           <Selection id="selection"/>
+          <Shop id="shop"/>
           <Task id="task"/>
           <Start id='start' />
           <Introduction id='intro' />

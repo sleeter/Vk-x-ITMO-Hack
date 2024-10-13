@@ -5,8 +5,11 @@ import GreetingOne from '../../assets/GreetingOne.svg';
 import GreetingTwo from '../../assets/GreetingTwo.svg';
 import './Introduction.css';
 import HelloAvatar from '../../assets/HelloAvatar.svg';
+import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
 
 export const Introduction = ({ id }) => {
+    const routeNavigator = useRouteNavigator();
+
     return (
         <Panel id={id}>
             <div style={{
@@ -24,7 +27,12 @@ export const Introduction = ({ id }) => {
                 <div className='avatar'>
                     <img src={HelloAvatar} alt='welcoming avatar'/>
                 </div>
-                <button className='intro-button'>Next</button>
+                <button
+                    className='intro-button'
+                    onClick={() => routeNavigator.push('/role')}
+                >
+                    Next
+                </button>
             </div>
         </Panel>
     );
