@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
 import { Header } from '../components/Header.js';
 import { Footer } from '../components/Footer.js';
-import place from "../assets/place.png";
 
 
 // URL API и пример ID пользователя
