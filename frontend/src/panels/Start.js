@@ -1,6 +1,8 @@
 import { Panel } from '@vkontakte/vkui';
 import PropTypes from 'prop-types';
-import {Header} from '../components/Header.js';
+
+import { Header } from '../components/Header.js';
+import { Footer } from '../components/Footer.js';
 
 export const Start = ({ id }) => {
     return (
@@ -10,6 +12,7 @@ export const Start = ({ id }) => {
                 flexDirection: 'column',
                 height: '100vh',
                 backgroundColor: '#1673DB',
+                justifyContent: 'space-between', // Разделяем контент и подвал по вертикали
             }}>
                 <Header auth={true} isLight={true} />
                 <div style={{
@@ -27,6 +30,7 @@ export const Start = ({ id }) => {
                         ITMOKKA
                     </h1>
                 </div>
+                <Footer />
             </div>
         </Panel>
     );

@@ -26,12 +26,12 @@ export const Selection = ({ id }) => {
                     hasHover={true}
                     style={{
                         width: '90%',
-                        margin: '20px auto', // Отступы между карточками
+                        margin: '20px auto',
                     }}
                 />
                 <ContentCard
                     onClick={() => {
-                        // Переход на страницу "Well-being challenge"
+
                     }}
                     src="https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
                     alt="Well-being challenge"

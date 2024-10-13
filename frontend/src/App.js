@@ -9,7 +9,7 @@ import QuizGame from "./panels/QuizGame.js";
 import {Role} from './panels/role/Role.js';
 
 export const App = () => {
-  const { panel: activePanel = DEFAULT_VIEW_PANELS.HOME } = useActiveVkuiLocation();
+  const { panel: activePanel = DEFAULT_VIEW_PANELS.START } = useActiveVkuiLocation();
 
   return (
     <SplitLayout>
