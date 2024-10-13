@@ -7,18 +7,18 @@ import {
     Div,
     Title,
     Button,
-    Placeholder
+    Placeholder,
+    Tappable
 } from '@vkontakte/vkui';
 import { Icon28CheckCircleOutline, Icon28CancelCircleOutline } from '@vkontakte/icons';
 import '@vkontakte/vkui/dist/vkui.css';
 import back from "../assets/back.svg"
-import {Header} from '../components/Header.js';
-import {Footer} from "../components/Footer.js";
+import { Header } from '../components/Header.js';
+import { Footer } from "../components/Footer.js";
 import mokka1 from '../assets/mokka1.png';
 import mokka2 from '../assets/mokka2.png'
 import mokka3 from '../assets/mokka3.png'
 import mokka4 from '../assets/mokka4.png'
-
 
 const questions = [
     { id: 1, text: "Поблагодарить своих коллег", category: "friendly" },
@@ -29,20 +29,20 @@ const questions = [
 
 const QuizGame = () => {
     const [activePanel, setActivePanel] = useState('game');
-    const [draggedItem, setDraggedItem] = useState(null);
+    const [selectedQuestion, setSelectedQuestion] = useState(null);
     const [userAnswers, setUserAnswers] = useState([]);
     const [score, setScore] = useState(0);
 
-    // Обработчик начала перетаскивания
-    const handleDragStart = (question) => {
-        setDraggedItem(question);
+    // Обработчик выбора вопроса
+    const handleSelectQuestion = (question) => {
+        setSelectedQuestion(question);
     };
 
-    // Обработчик завершения перетаскивания (отпускаем элемент на friendly/unfriendly)
-    const handleDrop = (category) => {
-        if (draggedItem) {
-            setUserAnswers((prev) => [...prev, { ...draggedItem, userCategory: category }]);
-            setDraggedItem(null);
+    // Обработчик выбора категории
+    const handleCategorySelect = (category) => {
+        if (selectedQuestion) {
+            setUserAnswers((prev) => [...prev, { ...selectedQuestion, userCategory: category }]);
+            setSelectedQuestion(null);
         }
     };
 
@@ -66,13 +66,13 @@ const QuizGame = () => {
                     backgroundImage: `url(${back})`,
                     backgroundSize: 'cover',
                 }}>
-                    <Header auth={true} isLight={false}/>
+                    <Header auth={true} isLight={false} />
                     <h2 style={{
                         fontWeight: '500',
                         textAlign: 'center',
                         marginTop: '100px',
                     }}>Викторина</h2>
-                    <Group style={{  }}>
+                    <Group>
                         <Div style={{
                             display: 'flex',
                             flexDirection: 'row',
@@ -83,39 +83,42 @@ const QuizGame = () => {
                         }}>
                             {questions.map((question) =>
                                 !userAnswers.some((a) => a.id === question.id) ? (
-                                    <Div
+                                    <Tappable
                                         key={question.id}
-                                        draggable
-                                        onDragStart={() => handleDragStart(question)}
+                                        onClick={() => handleSelectQuestion(question)}
                                         style={{
                                             width: 100,
                                             height: 100,
-                                            backgroundColor: '#2483E4',
-                                            color:'#fff',
-                                            fontWeight:500,
-                                            borderRadius:'20px',
+                                            backgroundColor: selectedQuestion?.id === question.id ? '#1366c2' : '#2483E4',
+                                            color: '#fff',
+                                            fontWeight: 500,
+                                            fontFamily: 'Arial, sans-serif',
+                                            fontSize: 14,
+                                            lineHeight: '1.2em',
+                                            borderRadius: '20px',
                                             display: 'flex',
                                             justifyContent: 'center',
                                             alignItems: 'center',
+                                            textAlign: 'center',
+                                            padding: '8px',
                                             border: '3px solid #1366c2',
-                                            cursor: 'grab'
+                                            cursor: 'pointer'
+
                                         }}
                                     >
                                         {question.text}
-                                    </Div>
+                                    </Tappable>
                                 ) : null
                             )}
                         </Div>
-                        {/* Зоны для перетаскивания */}
+                        {/* Зоны для выбора категории */}
                         <Div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                            <Div
-                                onDragOver={(e) => e.preventDefault()}
-                                onDrop={() => handleDrop('friendly')}
+                            <Tappable
+                                onClick={() => handleCategorySelect('friendly')}
                                 style={{
                                     width: 150,
                                     height: 150,
                                     marginTop: '3vh',
-                                    // border: '2px dashed #4BB34B',
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'center',
@@ -124,16 +127,14 @@ const QuizGame = () => {
                             >
                                 <Icon28CheckCircleOutline fill="#4BB34B" width={50} height={50} />
                                 <Title level="2" weight="bold">Friendly</Title>
-                            </Div>
+                            </Tappable>
 
-                            <Div
-                                onDragOver={(e) => e.preventDefault()}
-                                onDrop={() => handleDrop('unfriendly')}
+                            <Tappable
+                                onClick={() => handleCategorySelect('unfriendly')}
                                 style={{
                                     marginTop: '3vh',
                                     width: 150,
                                     height: 150,
-                                    // border: '2px dashed #E64646',
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'center',
@@ -142,10 +143,10 @@ const QuizGame = () => {
                             >
                                 <Icon28CancelCircleOutline fill="#E64646" width={50} height={50} />
                                 <Title level="2" weight="bold">Unfriendly</Title>
-                            </Div>
+                            </Tappable>
                         </Div>
-                        <Div style={{ marginTop: 16}}>
-                            <Button size="l" stretched onClick={finishGame} disabled={userAnswers.length !== questions.length} style={{backgroundColor:'#2483E4', opacity:1, color:'#FFF'}}>
+                        <Div style={{ marginTop: 16 }}>
+                            <Button size="l" stretched onClick={finishGame} disabled={userAnswers.length !== questions.length} style={{ backgroundColor: '#2483E4', color: '#FFF' }}>
                                 Завершить игру
                             </Button>
                         </Div>
@@ -181,8 +182,8 @@ const QuizGame = () => {
                                         alt="ITMO Family"
                                         style={{
                                             maxHeight: 200,
-                                            borderRadius: '10px',  // Немного скруглим углы для изображения
-                                            objectFit: 'cover'     // Чтобы изображение красиво вписывалось в область
+                                            borderRadius: '10px',
+                                            objectFit: 'cover'
                                         }}
                                     />
                                 </div>
@@ -208,8 +209,8 @@ const QuizGame = () => {
                                         alt="ITMO Family"
                                         style={{
                                             maxHeight: 200,
-                                            borderRadius: '10px',  // Немного скруглим углы для изображения
-                                            objectFit: 'cover'     // Чтобы изображение красиво вписывалось в область
+                                            borderRadius: '10px',
+                                            objectFit: 'cover'
                                         }}
                                     />
                                 </div>
@@ -235,8 +236,8 @@ const QuizGame = () => {
                                         alt="ITMO Family"
                                         style={{
                                             maxHeight: 200,
-                                            borderRadius: '10px',  // Немного скруглим углы для изображения
-                                            objectFit: 'cover'     // Чтобы изображение красиво вписывалось в область
+                                            borderRadius: '10px',
+                                            objectFit: 'cover'
                                         }}
                                     />
                                 </div>
@@ -262,8 +263,8 @@ const QuizGame = () => {
                                         alt="ITMO Family"
                                         style={{
                                             maxHeight: 200,
-                                            borderRadius: '10px',  // Немного скруглим углы для изображения
-                                            objectFit: 'cover'     // Чтобы изображение красиво вписывалось в область
+                                            borderRadius: '10px',
+                                            objectFit: 'cover'
                                         }}
                                     />
                                 </div>
@@ -275,8 +276,7 @@ const QuizGame = () => {
                     </Div>
                 </Group>
             </Panel>
-            <Footer style={{marginTop: 'auto'}}/>
-
+            <Footer style={{ marginTop: 'auto' }} />
         </View>
     );
 };
