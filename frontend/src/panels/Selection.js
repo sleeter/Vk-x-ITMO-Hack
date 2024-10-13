@@ -14,8 +14,8 @@ export const Selection = ({id}) => {
             <Header auth={true} isLight={false}/>
             <Group style={{
                 margin: 0,
-                marginBottom: '20px',
                 padding: 0,
+                paddingBottom:'70vw',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -25,14 +25,15 @@ export const Selection = ({id}) => {
                 paddingTop: '40px',
             }}>
                 <CardGrid size="l" style={{
-                    marginTop: '70px',
+                    marginTop: '100vw',
+                    // marginBottom: '100vw',
                     backgroundPosition: 'center',
                     flexGrow: 1,  // Это позволяет растянуть контейнер до максимальной высоты
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     width: '100%',
-
+                    flexDirection: 'column',  // Сделаем карточки в столбик
                 }}>
                     <ContentCard
                         onClick={() => {
@@ -44,8 +45,8 @@ export const Selection = ({id}) => {
                         text="Стиль жизни Университета ИТМО, основанный на принципах благополучия человека (well-being) и всестороннего развития членов ITMO Family"
                         hasHover={true}
                         style={{
-                            width: '30%',         // Ширина для больших экранов
-                            height: '33vw',        // Адаптивная высота
+                            width: '90%',         // Ширина для мобильных устройств
+                            height: 'auto',        // Автоматическая высота
                             margin: '20px auto',
                             borderRadius: '10px',
                             overflow: 'hidden',
@@ -61,8 +62,8 @@ export const Selection = ({id}) => {
                         text="Создание благоприятной среды для всестороннего развития членов ITMO.Family направлено на достижение баланса эмоционального, интеллектуального, физического и творческого состояний"
                         hasHover={true}
                         style={{
-                            width: '30%',         // Ширина для больших экранов
-                            height: '33vw',        // Адаптивная высота
+                            width: '90%',         // Ширина для мобильных устройств
+                            height: 'auto',        // Автоматическая высота
                             margin: '20px auto',
                             borderRadius: '10px',
                             overflow: 'hidden',
@@ -78,8 +79,8 @@ export const Selection = ({id}) => {
                         text="Работай чтобы жить, а не живи, чтобы работать. Развиваемся в разных направлениях вместе с университетом"
                         hasHover={true}
                         style={{
-                            width: '30%',         // Ширина для больших экранов
-                            height: '33vw',        // Адаптивная высота
+                            width: '90%',         // Ширина для мобильных устройств
+                            height: 'auto',        // Автоматическая высота
                             margin: '20px auto',
                             borderRadius: '10px',
                             overflow: 'hidden',
@@ -92,18 +93,24 @@ export const Selection = ({id}) => {
             <style>{`
                 @media (max-width: 768px) {
                     .vkuiCardGrid {
-                        margin-top: 10vw;  
+                        margin-top: 20vw; 
+                        margin-bottom: 10vw; 
+                        
+                         
                     }
 
                     .vkuiContentCard {
                         width: 90%;        
-                        height: auto;     
+                        height: auto; 
+                        margin-top: 10vw;
+                        margin-bottom:10vw;    
                     }
 
                     .vkuiContentCard img {
                         height: auto;      
                         width: 100%;      
                         object-fit: cover; 
+                        
                     }
                 }
                 

@@ -1,4 +1,4 @@
-import { Card, CardGrid, ContentCard, Group, Panel } from "@vkontakte/vkui";
+import {Card, CardGrid, ContentCard, Group, Panel} from "@vkontakte/vkui";
 import beITMO from '../assets/beITMO.jpg';
 import PropTypes from "prop-types";
 import back from "../assets/back.svg";
@@ -7,7 +7,7 @@ import {Footer} from "../components/Footer.js";
 import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
 
 
-export const BeItmo = ({ id }) => {
+export const BeItmo = ({id}) => {
     const routeNavigator = useRouteNavigator();
 
     const handleClick = (text) => {
@@ -20,10 +20,10 @@ export const BeItmo = ({ id }) => {
 
     return (
         <Panel id={id}>
-            <Header auth={true} isLight={false} />
+            <Header auth={true} isLight={false}/>
             <Group style={{
                 margin: 0,
-                marginBottom:'20px',
+                marginBottom: '20px',
                 padding: 0,
                 display: 'flex',
                 justifyContent: 'center',
@@ -83,10 +83,11 @@ export const BeItmo = ({ id }) => {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                                 cursor: 'pointer',
+                                marginTop: '0',
                             }}
                             onClick={() => handleClick(text)}
                         >
-                            <div style={{ color: 'white', fontSize: 16, textAlign: 'center' }}>
+                            <div style={{color: 'white', fontSize: 16, textAlign: 'center'}}>
                                 {text}
                             </div>
                         </Card>
@@ -115,6 +116,7 @@ export const BeItmo = ({ id }) => {
 
                     .vkuiCardGrid {
                         padding: 0; 
+                        margin-top:0;
                     }
 
                     Group {
