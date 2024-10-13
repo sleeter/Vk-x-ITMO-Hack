@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
 import { Header } from '../components/Header.js';
 import { Footer } from '../components/Footer.js';
+import place from "../assets/place.png";
+
 
 // URL API и пример ID пользователя
 const API_URL = 'http://84.201.137.6:8080/api/v1/topic/info';
@@ -88,17 +90,22 @@ export const BeFriendly = ({ id }) => {
     // Рендеринг списка задач на основе данных из API
     const renderTasks = (taskList, handleCardClick) => (
         <Div style={{ display: 'flex', flexDirection: 'column' }}>
-            {taskList.map((task) => (
-                <ContentCard
+            {taskList.map((task) => {
+                let picturePath;
+                if (task.picture === 'place') {
+                    picturePath = place;
+                }
+                return (
+                    <ContentCard
                     key={task.id}
-                    src={task.picture || 'https://via.placeholder.com/150'}  // Картинка задачи или заглушка
+                    src={picturePath || 'https://via.placeholder.com/150'}  // Картинка задачи или заглушка
                     header={task.name}
                     description={`Набери ${task.points} баллов`}
                     caption="Нажми для подробностей"
                     onClick={handleCardClick}  // Логика клика
                     style={{ cursor: 'pointer', marginBottom: '16px' }}
                 />
-            ))}
+            )})}
         </Div>
     );
 
