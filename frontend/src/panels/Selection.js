@@ -1,15 +1,8 @@
-import {CardGrid, ContentCard, } from '@vkontakte/vkui';
+import {CardGrid, ContentCard,} from '@vkontakte/vkui';
 import beITMO from '../assets/beITMO.jpg';
 
 export const Selection = () => {
     return (
-        // // <Panel style={{ backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
-        //     {/* Шапка */}
-        //     {/*<PanelHeader>*/}
-        //     {/*    <div style={{ textAlign: 'center', color: '#007bff', fontWeight: 'bold' }}>ITMOKKA</div>*/}
-        //     {/*</PanelHeader>*/}
-
-
         <CardGrid size="l" style={{marginTop: '20px'}}>
             <ContentCard
                 onClick={() => {
