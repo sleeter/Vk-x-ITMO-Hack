@@ -93,18 +93,26 @@ export const BeFriendly = ({ id }) => {
             {taskList.map((task) => {
                 let picturePath;
                 if (task.picture === 'place') {
-                    picturePath = place;
+                    picturePath = `https://optim.tildacdn.com/stor3263-6138-4962-a634-353634373636/-/resize/600x600/-/format/webp/37813807.png`;
+                } else if (task.picture === 'event') {
+                    picturePath =  `https://optim.tildacdn.com/tild3431-3063-4533-b136-333865666339/-/resize/600x600/-/format/webp/_pdfio_1.png`;
+                } else {
+                    picturePath = `https://optim.tildacdn.com/tild3262-3535-4565-a339-313233316335/-/resize/600x600/-/format/webp/_1.png`;
                 }
                 return (
                     <ContentCard
-                    key={task.id}
-                    src={picturePath || 'https://via.placeholder.com/150'}  // Картинка задачи или заглушка
-                    header={task.name}
-                    description={`Набери ${task.points} баллов`}
-                    caption="Нажми для подробностей"
-                    onClick={handleCardClick}  // Логика клика
-                    style={{ cursor: 'pointer', marginBottom: '16px' }}
-                />
+                        key={task.id}
+                        src={picturePath || 'https://via.placeholder.com/150'}  // Картинка задачи или заглушка
+                        header={task.name}
+                        description={`Набери ${task.points} баллов`}
+                        caption="Нажми для подробностей"
+                        onClick={handleCardClick}  // Логика клика
+                        style={{
+                            cursor: 'pointer',
+                            marginBottom: '16px',
+                            width: '20rem'
+                        }}
+                    />
             )})}
         </Div>
     );
