@@ -34,7 +34,7 @@ const Shop = () => {
                 backgroundSize: 'cover',
             }}>
                 <Title weight="bold" style={{
-                    marginTop: '25px',
+                    marginTop: '70px',
                     marginBottom: '25px',
                     textAlign: 'center',
                     fontSize: '40px'
