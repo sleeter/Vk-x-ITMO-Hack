@@ -13,7 +13,7 @@ import vkxitmo.teamalpha.itmokka.model.Task;
 @Component
 public interface TaskMapper {
 
-    TaskResponse taskToTaskResponse(Task task);
+    TaskResponse taskToTaskResponse(Task task, String status);
 
     TaskInfoResponse taskToTaskInfoResponse(Task task);
 

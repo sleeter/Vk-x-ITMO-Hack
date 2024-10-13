@@ -11,11 +11,10 @@ export const BeItmo = ({ id }) => {
     const routeNavigator = useRouteNavigator();
 
     const handleClick = (text) => {
-
         if (text === 'be friendly') {
             routeNavigator.push('/be-friendly');
         } else {
-            console.log(text);
+            routeNavigator.push('/not-ready');
         }
     };
 

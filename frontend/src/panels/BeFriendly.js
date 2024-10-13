@@ -1,142 +1,169 @@
-import back from "../assets/back.svg";
-import {Card, CardScroll, Group, Panel} from "@vkontakte/vkui";
-import beFriendly from "../assets/BeFriendly.svg";
-import PropTypes from "prop-types";
-import {Header} from '../components/Header.js';
+import { useState, useEffect } from 'react';
+import { Group, Panel, Title, ContentCard, Div, Spinner, Snackbar, Avatar } from "@vkontakte/vkui";
+import { Icon16Done } from '@vkontakte/icons';
+import vkBridge from '@vkontakte/vk-bridge';
+import PropTypes from 'prop-types';
 import {useRouteNavigator} from '@vkontakte/vk-mini-apps-router';
-import {Footer} from "../components/Footer.js";
+import { Header } from '../components/Header.js';
+import { Footer } from '../components/Footer.js';
+
+// URL API и пример ID пользователя
+const API_URL = 'http://84.201.137.6:8080/api/v1/topic/info';
+const PAGE_ID = 3;
 
 export const BeFriendly = ({ id }) => {
     const routeNavigator = useRouteNavigator();
+    const [categoryData, setCategoryData] = useState(null);  // Данные категории
+    const [loading, setLoading] = useState(true);  // Индикатор загрузки
+    const [snackbar, setSnackbar] = useState(null);  // Для отображения уведомления
+    const [error, setError] = useState(null);  // Для отображения ошибки
 
-    const handleCardClickToTask = () => {
-        routeNavigator.push('/task');
-    }
+    const fetchCategoryData = async (categoryName) => {
+        setLoading(true);
+        try {
+            const response = await fetch(`${API_URL}?name=${categoryName}&id=${PAGE_ID}`)
+            const result = await response.json();
+            console.log(result)
+            if (result.errors.length === 0) {
+                setCategoryData(result.data);
+            } else {
+                setError('Ошибка получения данных');
+            }
+        } catch (err) {
+            setError('Ошибка соединения с сервером');
+        } finally {
+            setLoading(false);
+        }
+    };
 
-    const handleCardClickToGame = () => {
-        routeNavigator.push('/game');
-    }
+    // При монтировании компонента загружаем данные для категории
+    useEffect(() => {
+        fetchCategoryData('be friendly');  // Здесь имя категории
+
+
+    }, []);
+
+    // Обработчик для "Мест" — вызов сканера QR-кодов
+    const handleCardClickForPlaces = () => {
+        vkBridge.send('VKWebAppOpenCodeReader')
+            .then((data) => {
+                if (data.code_data) {
+                    setSnackbar(
+                        <Snackbar
+                            onClose={() => setSnackbar(null)}
+                            before={<Avatar size={24} style={{ background: 'green' }}><Icon16Done fill="#fff" /></Avatar>}
+                        >
+                            Ура, теперь ты ещё более ITMO friendly!
+                        </Snackbar>
+                    );
+                }
+            })
+            .catch((error) => {
+                console.log("Ошибка при сканировании QR-кода", error);
+            });
+    };
+
+    // Разделяем задачи по категориям
+    const categorizeTasks = (taskList) => {
+        const categories = {
+            tests: [],
+            events: [],
+            places: []
+        };
+
+        taskList.forEach(task => {
+            if (task.category === "Тест") {
+                categories.tests.push(task);
+            }
+            if (task.category === "Мероприятие") {
+                categories.events.push(task);
+            }
+            if (task.category === "Место") {
+                categories.places.push(task);
+            }
+        });
+        return categories;
+    };
+
+    // Рендеринг списка задач на основе данных из API
+    const renderTasks = (taskList, handleCardClick) => (
+        <Div style={{ display: 'flex', flexDirection: 'column' }}>
+            {taskList.map((task) => (
+                <ContentCard
+                    key={task.id}
+                    src={task.picture || 'https://via.placeholder.com/150'}  // Картинка задачи или заглушка
+                    header={task.name}
+                    description={`Набери ${task.points} баллов`}
+                    caption="Нажми для подробностей"
+                    onClick={handleCardClick}  // Логика клика
+                    style={{ cursor: 'pointer', marginBottom: '16px' }}
+                />
+            ))}
+        </Div>
+    );
 
     return (
-        <Panel id={id}>
-            <Header isLight={false} auth={true}/>
+        <Panel id={id} style={{ width: '100%', maxWidth: 'none' }}>
+            <Header isLight={false} auth={true} />
             <Group style={{
-                backgroundImage: `url(${back})`,
                 minHeight: '100vh',
-                margin: 'auto',
-                marginTop: '3%',
+                margin: '0 auto',
                 display: 'flex',
                 justifyContent: 'center',
-                flexDirection: 'column'
+                flexDirection: 'column',
+                width: '100%',
+                maxWidth: 'none',
             }}>
-                <img src={beFriendly}
-                     style={{
-                         maxWidth: '100%',  // Теперь картинка будет занимать всю доступную ширину
-                         height: 'auto',    // Высота будет пропорциональной ширине
-                         alignItems: 'center',
-                         justifyContent: 'center',
-                         marginLeft: 'auto',
-                         marginRight: 'auto',
-                         marginBottom: '5%'
-                     }}
-                />
+                {/* Индикатор загрузки */}
+                {loading && <Spinner size="large" style={{ margin: 'auto' }} />}
 
-                <Group description="Задания">
-                    <CardScroll size="s">
-                        <Card
-                            style={{
-                                width: '20%',
-                                aspectRatio: '1 / 1',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                cursor: 'pointer',
-                            }}
-                            onClick={() => {handleCardClickToTask()}}
-                        >
-                            <img
-                                src={"https://optim.tildacdn.com/tild3431-3063-4533-b136-333865666339/-/format/webp/_pdfio_1.png"}
-                                style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px'}}
-                                alt="Card Image"
-                            />
-                        </Card>
-                        <Card
-                            style={{
-                                width: '20%',
-                                aspectRatio: '1 / 1',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                cursor: 'pointer',
-                            }}
-                            onClick={() => {handleCardClickToGame()}}
-                        >
-                            <img
-                                src={"https://optim.tildacdn.com/tild3831-6466-4437-b262-333263626234/-/format/webp/_pdfio_2.png"}
-                                style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px'}}
-                                alt="Card Image"
-                            />
-                        </Card>
-                        <Card style={{
-                            width: '20%',
-                            aspectRatio: '1 / 1',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            cursor: 'pointer',
-                        }}>
-                            <img
-                                src={"https://optim.tildacdn.com/tild3266-3937-4566-b961-643565373539/-/format/webp/_pdfio_1_2.png"}
-                                style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px'}}
-                                alt="Card Image"
-                            />
-                        </Card>
-                        <Card style={{
-                            width: '20%',
-                            aspectRatio: '1 / 1',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            cursor: 'pointer',
-                        }}>
-                            <img
-                                src={"https://optim.tildacdn.com/tild6561-3164-4335-b766-313063323461/-/format/webp/_pdfio_1.png"}
-                                style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px'}}
-                                alt="Card Image"
-                            />
-                        </Card>
-                        <Card style={{
-                            width: '20%',
-                            aspectRatio: '1 / 1',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            cursor: 'pointer',
-                        }}>
-                            <img
-                                src={"https://optim.tildacdn.com/tild6534-6531-4563-b363-313130313432/-/format/webp/___pdfio_1.png"}
-                                style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px'}}
-                                alt="Card Image"
-                            />
-                        </Card>
-                        <Card style={{
-                            width: '20%',
-                            aspectRatio: '1 / 1',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            cursor: 'pointer',
-                        }}>
-                            <img
-                                src={"https://optim.tildacdn.com/tild3166-3133-4138-b030-636661303937/-/format/webp/_-1.png"}
-                                style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px'}}
-                                alt="Card Image"
-                            />
-                        </Card>
-                    </CardScroll>
-                </Group>
+                {/* Если данные загружены, отображаем категорию */}
+                {categoryData && (
+                    <>
+                        <Title level="1" weight="bold" style={{ margin: '16px 0' }}>{categoryData.name}</Title>
+                        <Div>{categoryData.description}</Div>
+
+                        {/* Разделяем задачи по категориям */}
+                        {(() => {
+                            const categorizedTasks = categorizeTasks(categoryData.taskList);
+
+                            return (
+                                <>
+                                    {/* Категория Тесты */}
+                                    {categorizedTasks.tests.length > 0 && (
+                                        <Group>
+                                            <Title level="2" weight="bold">Тесты</Title>
+                                            {renderTasks(categorizedTasks.tests, () => routeNavigator.push('/task'))}
+                                        </Group>
+                                    )}
+
+                                    {/* Категория Мероприятия */}
+                                    {categorizedTasks.events.length > 0 && (
+                                        <Group>
+                                            <Title level="2" weight="bold">Мероприятия</Title>
+                                            {renderTasks(categorizedTasks.events, () => routeNavigator.push('/task'))}
+                                        </Group>
+                                    )}
+
+                                    {/* Категория Места */}
+                                    {categorizedTasks.places.length > 0 && (
+                                        <Group>
+                                            <Title level="2" weight="bold">Места</Title>
+                                            {renderTasks(categorizedTasks.places, handleCardClickForPlaces)}
+                                        </Group>
+                                    )}
+                                </>
+                            );
+                        })()}
+                    </>
+                )}
+
+                {/* Если произошла ошибка */}
+                {error && <Div style={{ color: 'red', textAlign: 'center' }}>{error}</Div>}
             </Group>
 
+            {/* Snackbar для уведомлений */}
+            {snackbar}
             <Footer />
         </Panel>
     );

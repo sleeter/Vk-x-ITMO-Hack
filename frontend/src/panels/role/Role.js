@@ -14,11 +14,15 @@ export const Role = ({ id }) => {
                 <h2>Пожалуйста, выберите роль</h2>
                 <div className='buttons'>
                     <button
-                        onClick={() => {routeNavigator.push('/Selection')}}
+                        onClick={() => {routeNavigator.push('/selection')}}
                     >
                         Студент
                     </button>
-                    <button>Сотрудник</button>
+                    <button
+                        onClick={() => {routeNavigator.push('/not-ready')}}
+                    >
+                        Сотрудник
+                    </button>
                 </div>
             </div>
         </Panel>
