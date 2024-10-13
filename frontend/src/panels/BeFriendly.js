@@ -9,7 +9,7 @@ import { Footer } from '../components/Footer.js';
 
 
 // URL API и пример ID пользователя
-const API_URL = 'https://sleeter.ru/api/v1/topic/info';
+const API_URL = 'http://84.201.137.6:8080/api/v1/topic/info';
 const PAGE_ID = 3;
 
 export const BeFriendly = ({ id }) => {
@@ -110,8 +110,8 @@ export const BeFriendly = ({ id }) => {
                             width: '20rem'
                         }}
                     />
-            )})}
-            </>
+                )})}
+        </>
     );
 
     return (
@@ -144,10 +144,10 @@ export const BeFriendly = ({ id }) => {
                                     {/* Категория Тесты */}
                                     {categorizedTasks.tests.length > 0 && (
                                         <Group>
+                                            <Title level="2" weight="bold">Тесты</Title>
                                             <HorizontalScroll>
                                                 <Div style={{ display: 'flex', gap: '10px' }}>
-                                            <Title level="2" weight="bold">Тесты</Title>
-                                            {renderTasks(categorizedTasks.tests, () => routeNavigator.push(`/task?id=${1}`))}
+                                                    {renderTasks(categorizedTasks.tests, () => routeNavigator.push(`/task?id=${0}`))}
                                                 </Div>
                                             </HorizontalScroll>
                                         </Group>
@@ -156,14 +156,14 @@ export const BeFriendly = ({ id }) => {
                                     {/* Категория Мероприятия */}
                                     {categorizedTasks.events.length > 0 && (
 
-                                            <Group>
-                                                <Title level="2" weight="bold">Мероприятия</Title>
-                                                <HorizontalScroll>
-                                                    <Div style={{ display: 'flex', gap: '10px' }}>
-                                                        {renderTasks(categorizedTasks.events, () => routeNavigator.push(`/task?id=${2}`))}
-                                                    </Div>
-                                                </HorizontalScroll>
-                                            </Group>
+                                        <Group>
+                                            <Title level="2" weight="bold">Мероприятия</Title>
+                                            <HorizontalScroll>
+                                                <Div style={{ display: 'flex', gap: '10px' }}>
+                                                    {renderTasks(categorizedTasks.events, () => routeNavigator.push(`/task?id=${1}`))}
+                                                </Div>
+                                            </HorizontalScroll>
+                                        </Group>
 
                                     )}
 
@@ -173,7 +173,7 @@ export const BeFriendly = ({ id }) => {
                                             <Title level="2" weight="bold">Места</Title>
                                             <HorizontalScroll>
                                                 <Div style={{ display: 'flex', gap: '10px' }}>
-                                                {renderTasks(categorizedTasks.places, handleCardClickForPlaces)}
+                                                    {renderTasks(categorizedTasks.places, handleCardClickForPlaces)}
                                                 </Div>
                                             </HorizontalScroll>
                                         </Group>
