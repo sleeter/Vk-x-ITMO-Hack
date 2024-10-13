@@ -1,21 +1,24 @@
-import {Card, CardGrid, ContentCard, Group, Panel} from "@vkontakte/vkui";
+import { Card, CardGrid, ContentCard, Group, Panel } from "@vkontakte/vkui";
 import beITMO from '../assets/beITMO.jpg';
 import PropTypes from "prop-types";
 import back from "../assets/back.svg";
 import {Header} from '../components/Header.js';
 
-export const BeItmo = ({id}) => {
+export const BeItmo = ({ id }) => {
     return (
         <Panel id={id}>
+            <Header auth={true} isLight={false} />
             <Group style={{
-                height: '100vh',
                 margin: 0,
+                marginBottom:'20px',
                 padding: 0,
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 flexDirection: 'column',
                 backgroundImage: `url(${back})`,
+                height: '100%',
+                paddingTop: '40px',
             }}>
                 <Header auth={true} isLight={false}/>
 
@@ -24,18 +27,19 @@ export const BeItmo = ({id}) => {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    marginTop: '60px',
+                    marginTop: '50px',
                     flexGrow: 0,
+                    width: '100%',
                 }}>
                     <ContentCard
                         src={beITMO}
                         alt="Picture of person's left hand with pink paint"
                         header="Be ITMO"
                         text="ITMO University's lifestyle based on the principles of human well-being
-                    (well-being) and comprehensive development of ITMO Family members."
-                        maxHeight={350}  // Ограничиваем максимальную высоту
+                        (well-being) and comprehensive development of ITMO Family members."
+                        maxHeight={350}
                         style={{
-                            width: '60%',
+                            width: '90%', // Для десктопов и планшетов
                             margin: '0 auto',
                         }}
                     />
@@ -50,12 +54,12 @@ export const BeItmo = ({id}) => {
                     gap: '20px 10px',
                     flexWrap: 'wrap',
                     flexGrow: 0,
-                    maxWidth: '500px'
+                    maxWidth: '500px',
+                    width: '100%',
                 }}>
                     {['be healthy', 'be eco', 'be Friendly', 'be pro', 'be fit', 'be open'].map((text, index) => (
-                        //TODO Переадрессация
                         <a href={`/${text.replace(' ', '')}`} key={index} className="card-link"
-                           style={{textDecoration: 'none'}}>
+                           style={{ textDecoration: 'none' }}>
                             <Card className="hover-card" style={{
                                 backgroundColor: ['#E74C3C', '#27AE60', '#E91E63', '#9B59B6', '#3498DB', '#E67E22'][index],
                                 borderRadius: 10,
@@ -65,7 +69,7 @@ export const BeItmo = ({id}) => {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                             }}>
-                                <div style={{color: 'white', fontSize: 16, textAlign: 'center'}}>
+                                <div style={{ color: 'white', fontSize: 16, textAlign: 'center' }}>
                                     {text}
                                 </div>
                             </Card>
@@ -73,6 +77,33 @@ export const BeItmo = ({id}) => {
                     ))}
                 </CardGrid>
             </Group>
+
+            <style>{`
+                @media (max-width: 600px) {
+                    .vkuiContentCard__in {
+                        max-width: 100%; 
+                    }
+
+                    .vkuiContentCard {
+                        width: 100% !important; 
+                        max-height: 250px !important; 
+                    }
+
+                    .hover-card {
+                        width: 120px;
+                        height: 120px;
+                    }
+
+                    .vkuiCardGrid {
+                        padding: 0; 
+                    }
+
+                    Group {
+                        padding-top: 60px; 
+                        
+                    }
+                }
+            `}</style>
         </Panel>
     );
 };
